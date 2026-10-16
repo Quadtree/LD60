@@ -1,8 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=5 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
+
+[sub_resource type="Environment" id="Environment_q1grt"]
+background_mode = 1
+
+[sub_resource type="TorusMesh" id="TorusMesh_q1grt"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,21 +19,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 111.0
 offset_bottom = 23.0
 text = "Some test LOL"
 
-[node name="Container" type="Container" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,26 +34,58 @@ grow_horizontal = 2
 grow_vertical = 2
 ratio = 1.25
 
-[node name="PixelatedScreenSubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/AspectRatioContainer"]
+[node name="PixelatedScreenSubViewportContainer" type="SubViewportContainer" parent="AspectRatioContainer"]
 texture_filter = 1
 layout_mode = 2
 stretch = true
 stretch_shrink = 4
 script = ExtResource("1_q1grt")
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/AspectRatioContainer/PixelatedScreenSubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(202, 162)
 size_2d_override = Vector2i(200, 160)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CanvasLayer/AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
 mesh = SubResource("CapsuleMesh_an2ui")
 
-[node name="Camera3D" type="Camera3D" parent="CanvasLayer/AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.8344)
+cull_mask = 1047553
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CanvasLayer/AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
 transform = Transform3D(0.354911, 0, -0.9349, 0, 1, 0, 0.9349, 0, 0.354911, -6.05787, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
+environment = SubResource("Environment_q1grt")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.86834, -0.834291, 0)
+layers = 2
+mesh = SubResource("TorusMesh_q1grt")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3)
+cull_mask = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -0.264462, 0.964396, 0, -0.964396, -0.264462, 8.02573, 0, 0)
+layers = 2
