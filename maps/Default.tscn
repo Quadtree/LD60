@@ -26,29 +26,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-texture_filter = 1
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+ratio = 1.25
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/AspectRatioContainer"]
+texture_filter = 1
+layout_mode = 2
 stretch = true
 stretch_shrink = 4
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/AspectRatioContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(288, 162)
+size = Vector2i(202, 162)
 size_2d_override = Vector2i(200, 160)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CanvasLayer/AspectRatioContainer/SubViewportContainer/SubViewport"]
 mesh = SubResource("CapsuleMesh_an2ui")
 
-[node name="Camera3D" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/AspectRatioContainer/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.8344)
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CanvasLayer/AspectRatioContainer/SubViewportContainer/SubViewport"]
 transform = Transform3D(0.354911, 0, -0.9349, 0, 1, 0, 0.9349, 0, 0.354911, -6.05787, 0, 0)
