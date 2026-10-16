@@ -23,6 +23,10 @@ window/stretch/aspect="ignore"
 
 project/assembly_name="LD60"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

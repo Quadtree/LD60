@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=7 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
+[ext_resource type="PackedScene" uid="uid://cttye28ews5xo" path="res://meshes/station_interior_2.glb" id="2_6jlvn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
 [sub_resource type="Environment" id="Environment_q1grt"]
 background_mode = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hlrh3"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_q1grt"]
 
@@ -51,16 +54,27 @@ render_target_update_mode = 4
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
 mesh = SubResource("CapsuleMesh_an2ui")
 
-[node name="Camera3D" type="Camera3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.8344)
-cull_mask = 1047553
-current = true
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
 transform = Transform3D(0.354911, 0, -0.9349, 0, 1, 0, 0.9349, 0, 0.354911, -6.05787, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
 environment = SubResource("Environment_q1grt")
+
+[node name="station_interior_2" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport" instance=ExtResource("2_6jlvn")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -40.56, 1.5, 0)
+
+[node name="Node3D" type="Node3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.896, 3, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0241, 0.837641, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_hlrh3")
+
+[node name="Camera3D" type="Camera3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.734021, 0)
+current = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
@@ -71,21 +85,21 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="BookViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/BookViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.86834, -0.834291, 0)
 layers = 2
 mesh = SubResource("TorusMesh_q1grt")
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3)
-cull_mask = 2
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/BookViewport"]
 transform = Transform3D(1, 0, 0, 0, -0.264462, 0.964396, 0, -0.964396, -0.264462, 8.02573, 0, 0)
 layers = 2
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/BookViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64187, 0.270652, 2.98469)
+cull_mask = 1048574
