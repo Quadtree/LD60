@@ -14,5 +14,7 @@ public partial class Manual : Node3D
 
         var page3 = this.FindChildByName<Node>("Page3");
         page3.FindChildByType<AnimationPlayer>().CurrentAnimation = "RightSide";
+
+        this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = GD.Load<Material>("res://materials/PageMat.tres");
     }
 }
