@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=38 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -47,6 +47,9 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_ktqxq"]
 material = SubResource("StandardMaterial3D_t4pk5")
 size = Vector3(10, 10, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t4pk5"]
+data = PackedVector3Array(-5, 5, 5, 5, 5, 5, -5, -5, 5, 5, 5, 5, 5, -5, 5, -5, -5, 5, 5, 5, -5, -5, 5, -5, 5, -5, -5, -5, 5, -5, -5, -5, -5, 5, -5, -5, 5, 5, 5, 5, 5, -5, 5, -5, 5, 5, 5, -5, 5, -5, -5, 5, -5, 5, -5, 5, -5, -5, 5, 5, -5, -5, -5, -5, 5, 5, -5, -5, 5, -5, -5, -5, 5, 5, 5, -5, 5, 5, 5, 5, -5, -5, 5, 5, -5, 5, -5, 5, 5, -5, -5, -5, 5, 5, -5, 5, -5, -5, -5, 5, -5, 5, 5, -5, -5, -5, -5, -5)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
@@ -199,6 +202,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.3443, 0, -315.271)
 layers = 4
 mesh = SubResource("BoxMesh_ktqxq")
 skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/PirateStation"]
+shape = SubResource("ConcavePolygonShape3D_t4pk5")
 
 [node name="CheatPirateStationLoc" type="Node3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.633, 0, -280.676)
