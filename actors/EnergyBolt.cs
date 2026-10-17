@@ -21,14 +21,14 @@ public partial class EnergyBolt : Node3D
 
         foreach (var it in GetTree().CurrentScene.FindChildrenByPredicate<Node3D>(it => (CanHitPlayer && it is ShipPC) || (CanHitEnemy && it is PirateFighter)))
         {
-            if (it.GlobalPosition.DistanceTo(GlobalPosition) < 2)
+            if (it.GlobalPosition.DistanceTo(GlobalPosition) < 1)
             {
                 QueueFree();
                 return;
             }
         }
 
-        GlobalPosition += Vector3.Forward * Speed;
+        GlobalPosition += -GlobalTransform.Basis.Column2 * Speed * (float)delta;
 
         TimeToLive -= (float)delta;
 

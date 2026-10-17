@@ -22,10 +22,14 @@ public partial class ShipPC : CharacterBody3D
 
         if (Input.IsActionPressed("fire") && FireCharge >= 0.35f)
         {
-            var bolt = GD.Load<PackedScene>("res://actors/EnergyBoltPlayer.tscn").Instantiate<Node3D>();
-            this.FindParentByType<SubViewport>().AddChild(bolt);
-            bolt.GlobalPosition = GlobalPosition;
-            bolt.GlobalRotation = GlobalRotation;
+            foreach (var sp in new float[] { -1.5f, 1.5f })
+            {
+                var bolt = GD.Load<PackedScene>("res://actors/EnergyBoltPlayer.tscn").Instantiate<Node3D>();
+                this.FindParentByType<SubViewport>().AddChild(bolt);
+                bolt.GlobalPosition = GlobalPosition + GlobalTransform.Basis.Column0 * sp;
+                bolt.GlobalRotation = GlobalRotation;
+            }
+
             FireCharge = 0;
         }
 

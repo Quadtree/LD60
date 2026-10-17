@@ -11,7 +11,7 @@ material = SubResource("StandardMaterial3D_da21d")
 
 [node name="EnergyBolt" instance=ExtResource("1_1v2x6")]
 CanHitEnemy = true
-Speed = 50.0
+Speed = 75.0
 
 [node name="MeshInstance3D" parent="." index="0"]
 mesh = SubResource("CylinderMesh_nymwj")

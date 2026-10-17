@@ -12,6 +12,6 @@ material = SubResource("StandardMaterial3D_8nt85")
 script = ExtResource("1_r5tf2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.22522e-08, 1.53907, 0, -0.509071, -6.72749e-08, 0, 0, 0, 0.509071, 0, 0, 0)
+transform = Transform3D(9.72675e-16, -6.72749e-08, -0.509071, -0.509071, -6.72749e-08, 0, -2.22522e-08, 1.53907, -2.22522e-08, 0, 0, 0)
 layers = 7
 mesh = SubResource("CylinderMesh_r5tf2")
