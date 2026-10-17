@@ -35,17 +35,20 @@ public partial class ShipPC : CharacterBody3D
 
         FireCharge += (float)delta;
 
-        if (Input.IsActionPressed("left")) Rotate(GlobalTransform.Basis.Column1, (float)(SpinRate * delta));
-        if (Input.IsActionPressed("right")) Rotate(GlobalTransform.Basis.Column1, -(float)(SpinRate * delta));
-        if (Input.IsActionPressed("forward")) Rotate(GlobalTransform.Basis.Column0, -(float)(SpinRate * delta));
-        if (Input.IsActionPressed("backward")) Rotate(GlobalTransform.Basis.Column0, (float)(SpinRate * delta));
-        if (Input.IsActionPressed("spin_left")) Rotate(GlobalTransform.Basis.Column2, (float)(SpinRate * delta));
-        if (Input.IsActionPressed("spin_right")) Rotate(GlobalTransform.Basis.Column2, -(float)(SpinRate * delta));
+        if (Input.IsActionPressed("spin_left")) Rotate(GlobalTransform.Basis.Column1, (float)(SpinRate * delta));
+        if (Input.IsActionPressed("spin_right")) Rotate(GlobalTransform.Basis.Column1, -(float)(SpinRate * delta));
+        //if (Input.IsActionPressed("forward")) Rotate(GlobalTransform.Basis.Column0, -(float)(SpinRate * delta));
+        //if (Input.IsActionPressed("backward")) Rotate(GlobalTransform.Basis.Column0, (float)(SpinRate * delta));
+        //if (Input.IsActionPressed("spin_left")) Rotate(GlobalTransform.Basis.Column2, (float)(SpinRate * delta));
+        //if (Input.IsActionPressed("spin_right")) Rotate(GlobalTransform.Basis.Column2, -(float)(SpinRate * delta));
 
         Vector3 desiredVelocity = Vector3.Zero;
 
-        if (Input.IsActionPressed("accelerate")) desiredVelocity -= GlobalTransform.Basis.Column2 * MoveSpeed;
-        else if (Input.IsActionPressed("decelerate")) desiredVelocity += GlobalTransform.Basis.Column2 * MoveSpeed;
+        if (Input.IsActionPressed("left")) desiredVelocity -= GlobalTransform.Basis.Column0 * MoveSpeed;
+        if (Input.IsActionPressed("right")) desiredVelocity += GlobalTransform.Basis.Column0 * MoveSpeed;
+
+        if (Input.IsActionPressed("forward")) desiredVelocity -= GlobalTransform.Basis.Column2 * MoveSpeed;
+        if (Input.IsActionPressed("backward")) desiredVelocity += GlobalTransform.Basis.Column2 * MoveSpeed;
 
         var accel = Acceleration * (float)delta;
 
