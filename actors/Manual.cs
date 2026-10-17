@@ -38,7 +38,7 @@ public partial class Manual : Node3D
 
         this.FindChildByName<Node>("Page1").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber}.png", $"res://textures/manpages/page{currentPageNumber - 1}.png", true, false);
         this.FindChildByName<Node>("Page2").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber + 2}.png", $"res://textures/manpages/page{currentPageNumber + 1}.png", true, false);
-        //this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber}.png", $"res://textures/manpages/page{currentPageNumber + 1}.png");
+        this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber + 4}.png", $"res://textures/manpages/page{currentPageNumber + 3}.png", false, false);
     }
 
     void AdvancePages()
@@ -46,6 +46,8 @@ public partial class Manual : Node3D
         this.FindChildByName<Node>("Page2").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightToLeft";
         TrackedAnimationPlayer = this.FindChildByName<Node>("Page2").FindChildByType<AnimationPlayer>();
         CurrentMovement = 1;
+
+        this.FindChildByName<Node3D>("Page3").Visible = true;
     }
 
     public override void _Process(double delta)
