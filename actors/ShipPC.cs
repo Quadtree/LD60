@@ -9,6 +9,9 @@ public partial class ShipPC : CharacterBody3D
     [Export]
     float MoveSpeed;
 
+    [Export]
+    float Acceleration = 1;
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -18,9 +21,21 @@ public partial class ShipPC : CharacterBody3D
         if (Input.IsActionPressed("left")) RotateY((float)(SpinRate * delta));
         if (Input.IsActionPressed("right")) RotateY(-(float)(SpinRate * delta));
 
-        if (Input.IsActionPressed("forward")) Velocity = -GlobalTransform.Basis.Column2 * MoveSpeed;
-        else if (Input.IsActionPressed("backward")) Velocity = GlobalTransform.Basis.Column2 * MoveSpeed;
-        else Velocity = Vector3.Zero;
+        Vector3 desiredVelocity = Vector3.Zero;
+
+        if (Input.IsActionPressed("forward")) desiredVelocity -= GlobalTransform.Basis.Column2 * MoveSpeed;
+        else if (Input.IsActionPressed("backward")) desiredVelocity += GlobalTransform.Basis.Column2 * MoveSpeed;
+
+        var accel = Acceleration * (float)delta;
+
+        if (Velocity.DistanceTo(desiredVelocity) < accel)
+        {
+            Velocity = desiredVelocity;
+        }
+        else
+        {
+            Velocity += (desiredVelocity - Velocity).Normalized() * accel;
+        }
 
         MoveAndSlide();
     }

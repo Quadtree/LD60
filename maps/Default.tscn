@@ -139,6 +139,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.377, 0, 0)
 script = ExtResource("10_knjwl")
 SpinRate = 3.0
 MoveSpeed = 10.0
+Acceleration = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/ShipPC"]
 shape = SubResource("SphereShape3D_bd0q3")
