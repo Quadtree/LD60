@@ -94,7 +94,7 @@ public partial class Manual : Node3D
 
         if (TrackedAnimationPlayer != null)
         {
-            GD.Print(TrackedAnimationPlayer.CurrentAnimationPosition);
+            //GD.Print(TrackedAnimationPlayer.CurrentAnimationPosition);
             if (TrackedAnimationPlayer.CurrentAnimationPosition >= 2.45f && CurrentMovement == 1)
             {
                 currentPageNumber += 2;

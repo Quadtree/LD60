@@ -1,0 +1,12 @@
+- Space mode, fly around
+- Attacks by pirates
+- Visit station #2
+- Boxing the robot
+- Decrypt the message
+- Flying to the pirate station
+- Destroy the pirate station, win
+- Win screen
+- Lose screen
+- Generate actual manual in Libreoffice
+- Sound effects
+- Startup screen
