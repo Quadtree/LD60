@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=32 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://5la054olky1t" path="res://textures/starfield1.png" id="12_j1mvy"]
 [ext_resource type="Script" uid="uid://c143ccvumkxbe" path="res://actors/SkySphere.cs" id="13_2dvic"]
 [ext_resource type="PackedScene" uid="uid://cgnsovydx2hsg" path="res://actors/PirateFighter.tscn" id="14_lr4ce"]
+[ext_resource type="FontFile" uid="uid://cbaugvydytq6k" path="res://fonts/RobotoMono-VariableFont_wght.ttf" id="16_aomgn"]
+[ext_resource type="Script" uid="uid://b8j2ujvu3bvaw" path="res://maps/ShipLocationLabel.cs" id="17_lmt8x"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
@@ -43,6 +45,16 @@ texture_filter = 0
 material = SubResource("StandardMaterial3D_2dvic")
 radius = 100.0
 height = 500.0
+
+[sub_resource type="FontVariation" id="FontVariation_lmt8x"]
+base_font = ExtResource("16_aomgn")
+variation_opentype = {
+2003265652: 300
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_0tign"]
+font = SubResource("FontVariation_lmt8x")
+font_size = 12
 
 [sub_resource type="TorusMesh" id="TorusMesh_q1grt"]
 
@@ -207,6 +219,14 @@ script = ExtResource("13_2dvic")
 
 [node name="PirateFighter" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("14_lr4ce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6547, 0, -59.4882)
+
+[node name="ShipLocationLabel" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 23.0
+text = "SOME TEXT"
+label_settings = SubResource("LabelSettings_0tign")
+script = ExtResource("17_lmt8x")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
