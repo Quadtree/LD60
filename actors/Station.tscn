@@ -20,4 +20,7 @@ surface_material_override/1 = ExtResource("3_ntnoc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_eectv")
 
+[node name="ExitPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.307598, 0, -1.1057)
+
 [editable path="station1"]

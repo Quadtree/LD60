@@ -9,7 +9,16 @@ public partial class Default : Control
 
         ShipMode();
 
+        this.FindChildByName<Area3D>("ExitStation2").BodyEntered += (body) =>
+        {
+            if (body is InStationPC pc)
+            {
+                ShipMode();
 
+                var shp = this.FindChildByType<ShipPC>();
+                shp.GlobalPosition = this.FindChildByName<Node3D>("Station").FindChildByName<Node3D>("ExitPoint").GlobalPosition;
+            }
+        };
     }
 
     public override void _Input(InputEvent @event)

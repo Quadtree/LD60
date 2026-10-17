@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=40 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -67,6 +67,9 @@ albedo_color = Color(0.786776, 0.62281, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lmt8x"]
 size = Vector3(10, 10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ktqxq"]
+size = Vector3(15, 5, 5)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hlrh3"]
 
@@ -277,6 +280,12 @@ script = ExtResource("17_0tign")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2/RobotFightStart"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.6784, 0, -19.0152)
 shape = SubResource("BoxShape3D_lmt8x")
+
+[node name="ExitStation2" type="Area3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7089, 0, 18.2727)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2/ExitStation2"]
+shape = SubResource("BoxShape3D_ktqxq")
 
 [node name="InStationPC" type="CharacterBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0241, 0.837641, 0)
