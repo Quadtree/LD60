@@ -52,7 +52,7 @@ void fragment() {
 [resource]
 render_priority = 0
 shader = SubResource("Shader_ej7aq")
-shader_parameter/albedo = Color(1, 1, 0, 1)
+shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("1_ej7aq")
 shader_parameter/albedo_texture_size = Vector2i(320, 320)
 shader_parameter/point_size = 1.0
