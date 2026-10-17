@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgnsovydx2hsg"]
+[gd_scene load_steps=4 format=3 uid="uid://cgnsovydx2hsg"]
 
 [ext_resource type="PackedScene" uid="uid://dghhl0gjn34vj" path="res://meshes/fighter1.glb" id="1_xse1j"]
 
@@ -6,7 +6,9 @@
 shading_mode = 2
 albedo_color = Color(1, 0.435294, 0.384314, 1)
 
-[node name="PirateFighter" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_xse1j"]
+
+[node name="PirateFighter" type="AnimatableBody3D"]
 
 [node name="fighter1" parent="." instance=ExtResource("1_xse1j")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -14,5 +16,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="Cube" parent="fighter1" index="0"]
 layers = 6
 surface_material_override/0 = SubResource("StandardMaterial3D_e4orn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3.05725, 0, 0, 0, 3.05725, 0, 0, 0, 3.05725, 0, 0, 0)
+shape = SubResource("SphereShape3D_xse1j")
 
 [editable path="fighter1"]
