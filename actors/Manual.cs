@@ -21,6 +21,16 @@ public partial class Manual : Node3D
         UpdatePages();
     }
 
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (@event.IsActionPressed("advance_manual"))
+        {
+            AdvancePages();
+        }
+    }
+
     void UpdatePages()
     {
         this.FindChildByName<Node>("Page1").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber}.png", $"res://textures/manpages/page{currentPageNumber - 1}.png", true);
