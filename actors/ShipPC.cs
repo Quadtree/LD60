@@ -12,6 +12,9 @@ public partial class ShipPC : CharacterBody3D
     [Export]
     float Acceleration = 1;
 
+    [Export]
+    float Health = 15;
+
     float FireCharge;
 
     public override void _PhysicsProcess(double delta)
@@ -66,6 +69,12 @@ public partial class ShipPC : CharacterBody3D
 
     public void TakeDamage(float amt)
     {
-        // @TODO
+        Health -= amt;
+        if (Health <= 0)
+        {
+            var tree = GetTree();
+
+            CrawlScreen.PutUpCrawlScreen(this, "You destroyed the\npirate station and\nrecovered the gems!", () => tree.ChangeSceneToFile("res://maps/Default.tscn"));
+        }
     }
 }

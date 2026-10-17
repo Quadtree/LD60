@@ -13,7 +13,16 @@ public partial class CrawlScreen : Control
 
         ProcessMode = ProcessModeEnum.Always;
 
+        GetTree().Paused = true;
+
         Cooldown = Time.GetTicksMsec() + 500;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        GetTree().Paused = false;
     }
 
     public static void PutUpCrawlScreen(Node ctx, string text, Action next)
