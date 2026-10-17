@@ -16,6 +16,17 @@ public partial class Default : Control
                 ShipMode();
 
                 var shp = this.FindChildByType<ShipPC>();
+                shp.GlobalPosition = this.FindChildByName<Node3D>("Station2").FindChildByName<Node3D>("ExitPoint").GlobalPosition;
+            }
+        };
+
+        this.FindChildByName<Area3D>("ExitStation1").BodyEntered += (body) =>
+        {
+            if (body is InStationPC pc)
+            {
+                ShipMode();
+
+                var shp = this.FindChildByType<ShipPC>();
                 shp.GlobalPosition = this.FindChildByName<Node3D>("Station").FindChildByName<Node3D>("ExitPoint").GlobalPosition;
             }
         };
@@ -25,6 +36,7 @@ public partial class Default : Control
     {
         base._Input(@event);
 
+        if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_station_1")) Station1Mode();
         if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_station_2")) Station2CheatMode();
         if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_final")) CheatToPirateStation();
     }
@@ -43,7 +55,13 @@ public partial class Default : Control
 
     public void Station1Mode()
     {
+        StationMode();
 
+        var pc = this.FindChildByType<InStationPC>();
+
+        var entryExit = this.FindChildByName<Node3D>("Station1EntryExitPoint");
+
+        pc.GlobalPosition = entryExit.GlobalPosition;
     }
 
     public void Station2Mode()
