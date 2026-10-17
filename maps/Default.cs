@@ -16,7 +16,7 @@ public partial class Default : Control
                 ShipMode();
 
                 var shp = this.FindChildByType<ShipPC>();
-                shp.GlobalPosition = this.FindChildByName<Node3D>("Station2").FindChildByName<Node3D>("ExitPoint").GlobalPosition;
+                shp.GlobalTransform = this.FindChildByName<Node3D>("Station2").FindChildByName<Node3D>("ExitPoint").GlobalTransform;
             }
         };
 
@@ -27,7 +27,7 @@ public partial class Default : Control
                 ShipMode();
 
                 var shp = this.FindChildByType<ShipPC>();
-                shp.GlobalPosition = this.FindChildByName<Node3D>("Station").FindChildByName<Node3D>("ExitPoint").GlobalPosition;
+                shp.GlobalTransform = this.FindChildByName<Node3D>("Station").FindChildByName<Node3D>("ExitPoint").GlobalTransform;
             }
         };
 
@@ -36,7 +36,7 @@ public partial class Default : Control
             (this.FindChildByName<StaticBody3D>("Station2"), null),
         })
         {
-            
+
         }
     }
 
@@ -69,7 +69,7 @@ public partial class Default : Control
 
         var entryExit = this.FindChildByName<Node3D>("Station1EntryExitPoint");
 
-        pc.GlobalPosition = entryExit.GlobalPosition;
+        pc.GlobalTransform = entryExit.GlobalTransform;
     }
 
     public void Station2Mode()
@@ -80,7 +80,7 @@ public partial class Default : Control
 
         var entryExit = this.FindChildByName<Node3D>("Station2EntryExitPoint");
 
-        pc.GlobalPosition = entryExit.GlobalPosition;
+        pc.GlobalTransform = entryExit.GlobalTransform;
     }
 
     public void Station2CheatMode()
