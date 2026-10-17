@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=28 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c0fib67bnlsn1" path="res://actors/Asteroid.tscn" id="9_kvuol"]
 [ext_resource type="PackedScene" uid="uid://cbuokbvkd7fnt" path="res://actors/Station.tscn" id="9_yw211"]
 [ext_resource type="Script" uid="uid://d02udybt8mtt0" path="res://actors/ShipPC.cs" id="10_knjwl"]
+[ext_resource type="Material" uid="uid://dk22m6fao1iym" path="res://materials/BronzeStationShell.tres" id="12_gqor7"]
 [ext_resource type="Texture2D" uid="uid://5la054olky1t" path="res://textures/starfield1.png" id="12_j1mvy"]
 [ext_resource type="Script" uid="uid://c143ccvumkxbe" path="res://actors/SkySphere.cs" id="13_2dvic"]
 [ext_resource type="PackedScene" uid="uid://cgnsovydx2hsg" path="res://actors/PirateFighter.tscn" id="14_lr4ce"]
@@ -40,8 +41,8 @@ texture_filter = 0
 
 [sub_resource type="SphereMesh" id="SphereMesh_lr4ce"]
 material = SubResource("StandardMaterial3D_2dvic")
-radius = 500.0
-height = 1000.0
+radius = 100.0
+height = 500.0
 
 [sub_resource type="TorusMesh" id="TorusMesh_q1grt"]
 
@@ -133,13 +134,52 @@ shape = SubResource("ConcavePolygonShape3D_hlrh3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20000, 0)
 
 [node name="Asteroid1" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4475, 0, -10.8073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5092, 0, -13.213)
+
+[node name="Asteroid2" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8081, 0, -14.0766)
+
+[node name="Asteroid3" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7012, 0, -12.1644)
+
+[node name="Asteroid4" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8341, 0, -9.88202)
+
+[node name="Asteroid5" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7629, 0, -17.2843)
+
+[node name="Asteroid6" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.27283, 0, -13.9533)
+
+[node name="Asteroid7" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.27283, 0, -13.9533)
+
+[node name="Asteroid8" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.2607, 0, -69.2796)
+
+[node name="Asteroid9" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.5595, 0, -70.1432)
+
+[node name="Asteroid10" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4527, 0, -68.231)
+
+[node name="Asteroid11" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.5856, 0, -65.9486)
+
+[node name="Asteroid12" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5144, 0, -73.3509)
+
+[node name="Asteroid13" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0243, 0, -70.0199)
+
+[node name="Asteroid14" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0243, 0, -70.0199)
 
 [node name="ShipPC" type="CharacterBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
 transform = Transform3D(0.999999, -7.09504e-11, -0.00162316, 7.09504e-11, 1, -5.73188e-14, 0.00162316, -5.73188e-14, 0.999999, 21.377, 0, 0)
 script = ExtResource("10_knjwl")
 SpinRate = 1.5
-MoveSpeed = 10.0
+MoveSpeed = 25.0
 Acceleration = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/ShipPC"]
@@ -147,18 +187,26 @@ shape = SubResource("SphereShape3D_bd0q3")
 
 [node name="Camera3D" type="Camera3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/ShipPC"]
 cull_mask = 1047556
+far = 100.0
 
 [node name="Station" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_yw211")]
 transform = Transform3D(18.4835, 0, 7.63948, 0, 20, 0, -7.63948, 0, 18.4835, 21.9826, 0, 21.7852)
 
+[node name="Station2" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_yw211")]
+transform = Transform3D(18.4835, 0, 7.63948, 0, 20, 0, -7.63948, 0, 18.4835, 244.36, 0, -84.4504)
+
+[node name="Icosphere" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/Station2/station1" index="0"]
+surface_material_override/0 = ExtResource("12_gqor7")
+
 [node name="SkySphere" type="MeshInstance3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
+visible = false
 layers = 6
 mesh = SubResource("SphereMesh_lr4ce")
 skeleton = NodePath("../..")
 script = ExtResource("13_2dvic")
 
 [node name="PirateFighter" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("14_lr4ce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.639, 0, -24.33)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6547, 0, -59.4882)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
@@ -215,3 +263,5 @@ transform = Transform3D(-3.27835e-08, 0, -0.5, 0, 0.75, 0, 0.75, 0, -2.18557e-08
 transform = Transform3D(-3.27835e-08, 0, -0.5, 0, 0.75, 0, 0.75, 0, -2.18557e-08, 0, 0.0806551, 0)
 
 [editable path="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/StaticBody3D/station_interior_2"]
+[editable path="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/Station2"]
+[editable path="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/Station2/station1"]
