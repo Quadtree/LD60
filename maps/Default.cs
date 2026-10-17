@@ -30,6 +30,17 @@ public partial class Default : Control
                 shp.GlobalPosition = this.FindChildByName<Node3D>("Station").FindChildByName<Node3D>("ExitPoint").GlobalPosition;
             }
         };
+
+        foreach (var stationEntry in new (StaticBody3D, object)[] {
+            (this.FindChildByName<StaticBody3D>("Station"), null),
+            (this.FindChildByName<StaticBody3D>("Station"), null),
+        })
+        {
+            
+        }
+
+        // entering station 1
+
     }
 
     public override void _Input(InputEvent @event)
