@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=27 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://d02udybt8mtt0" path="res://actors/ShipPC.cs" id="10_knjwl"]
 [ext_resource type="Texture2D" uid="uid://5la054olky1t" path="res://textures/starfield1.png" id="12_j1mvy"]
 [ext_resource type="Script" uid="uid://c143ccvumkxbe" path="res://actors/SkySphere.cs" id="13_2dvic"]
+[ext_resource type="PackedScene" uid="uid://cgnsovydx2hsg" path="res://actors/PirateFighter.tscn" id="14_lr4ce"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
@@ -132,10 +133,10 @@ shape = SubResource("ConcavePolygonShape3D_hlrh3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20000, 0)
 
 [node name="Asteroid1" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5581, -1.19209e-07, -4.56682)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4475, 0, -10.8073)
 
 [node name="ShipPC" type="CharacterBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.377, 0, 0)
+transform = Transform3D(0.999999, -7.09504e-11, -0.00162316, 7.09504e-11, 1, -5.73188e-14, 0.00162316, -5.73188e-14, 0.999999, 21.377, 0, 0)
 script = ExtResource("10_knjwl")
 SpinRate = 1.5
 MoveSpeed = 10.0
@@ -155,6 +156,9 @@ layers = 6
 mesh = SubResource("SphereMesh_lr4ce")
 skeleton = NodePath("../..")
 script = ExtResource("13_2dvic")
+
+[node name="PirateFighter" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("14_lr4ce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.639, 0, -24.33)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
