@@ -2,6 +2,7 @@
   - Momentum
   - Rise, fall
 - Attacks by pirates
+- Player weapons
 - Visit station #2
 - Boxing the robot
 - Decrypt the message
