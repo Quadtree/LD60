@@ -1,5 +1,3 @@
-- Attacks by pirates
-- Player weapons
 - Visit station #2
 - Boxing the robot
 - Decrypt the message
@@ -16,3 +14,5 @@
 - Space mode, fly around
   - Momentum
   - Rise, fall
+- Attacks by pirates
+- Player weapons
