@@ -54,6 +54,11 @@ public partial class RobotFightUi : Control
         if (@event.IsActionPressed("fight_2")) MakeFightMove(Moves.Feint);
         if (@event.IsActionPressed("fight_3")) MakeFightMove(Moves.Jab);
         if (@event.IsActionPressed("fight_4")) MakeFightMove(Moves.Laser);
+
+        if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_win_fight"))
+        {
+
+        }
     }
 
     void MakeFightMove(Moves move)
@@ -62,8 +67,6 @@ public partial class RobotFightUi : Control
         oppoPatPos = (oppoPatPos + 1) % OPPO_PATTERN.Length;
 
         YourMove = move;
-
-
 
         if (YourMove == Moves.Laser)
         {
@@ -103,6 +106,11 @@ public partial class RobotFightUi : Control
         else if (TheOutcome == Outcome.Robot_wins) YourHealth--;
 
         UpdateBoxes();
+    }
+
+    void PlayerWinsFight()
+    {
+
     }
 
     void UpdateBoxes()
