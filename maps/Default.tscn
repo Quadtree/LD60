@@ -196,8 +196,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6547, 0, -59.4882)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.3443, 0, -315.271)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/PirateStation"]
+layers = 4
 mesh = SubResource("BoxMesh_ktqxq")
 skeleton = NodePath("../..")
+
+[node name="CheatPirateStationLoc" type="Node3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.633, 0, -280.676)
 
 [node name="ShipLocationLabel" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
 texture_filter = 1

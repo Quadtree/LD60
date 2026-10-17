@@ -16,10 +16,8 @@ public partial class Default : Control
     {
         base._Input(@event);
 
-        if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_station_2"))
-        {
-            Station2CheatMode();
-        }
+        if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_station_2")) Station2CheatMode();
+        if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_final")) CheatToPirateStation();
     }
 
     public void ShipMode()
@@ -57,6 +55,17 @@ public partial class Default : Control
         var pc = this.FindChildByType<InStationPC>();
 
         var entryExit = this.FindChildByName<Node3D>("Station2EntryExitPoint2");
+
+        pc.GlobalPosition = entryExit.GlobalPosition;
+    }
+
+    public void CheatToPirateStation()
+    {
+        ShipMode();
+
+        var pc = this.FindChildByType<ShipPC>();
+
+        var entryExit = this.FindChildByName<Node3D>("CheatPirateStationLoc");
 
         pc.GlobalPosition = entryExit.GlobalPosition;
     }
