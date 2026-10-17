@@ -21,6 +21,8 @@ public partial class RobotFightStart : Area3D
         {
             GD.Print("FIGHT START!");
             pc.Frozen = true;
+
+            this.FindParentByType<Viewport>().FindChildByType<RobotFightUi>().Visible = true;
         }
     }
 }
