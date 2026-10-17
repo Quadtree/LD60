@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class Asteroid : StaticBody3D
+public partial class Asteroid : AnimatableBody3D
 {
     Vector3 RotationAxis;
 
