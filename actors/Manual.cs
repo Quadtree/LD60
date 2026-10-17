@@ -4,7 +4,7 @@ using Godot;
 public partial class Manual : Node3D
 {
     [Export]
-    float AnimSpeed = 3;
+    float AnimSpeed = 6;
 
     Node3D Riser;
 
@@ -60,7 +60,7 @@ public partial class Manual : Node3D
 
     void AdvancePages()
     {
-        if (currentPageNumber >= 4) return;
+        if (currentPageNumber >= 3) return;
 
         this.FindChildByName<Node>("Page2").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightToLeft";
         Riser = this.FindChildByName<Node3D>("Page2");
@@ -95,7 +95,7 @@ public partial class Manual : Node3D
         if (TrackedAnimationPlayer != null)
         {
             GD.Print(TrackedAnimationPlayer.CurrentAnimationPosition);
-            if (TrackedAnimationPlayer.CurrentAnimationPosition >= 2.4f && CurrentMovement == 1)
+            if (TrackedAnimationPlayer.CurrentAnimationPosition >= 2.45f && CurrentMovement == 1)
             {
                 currentPageNumber += 2;
                 UpdatePages();
@@ -103,7 +103,7 @@ public partial class Manual : Node3D
                 CurrentMovement = 0;
                 TrackedAnimationPlayer = null;
             }
-            else if (TrackedAnimationPlayer.CurrentAnimationPosition >= 2.4f && CurrentMovement == -1)
+            else if (TrackedAnimationPlayer.CurrentAnimationPosition >= 2.45f && CurrentMovement == -1)
             {
                 currentPageNumber -= 2;
                 UpdatePages();
