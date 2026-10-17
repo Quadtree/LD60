@@ -28,6 +28,11 @@ public partial class Manual : Node3D
         //this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber}.png", $"res://textures/manpages/page{currentPageNumber + 1}.png");
     }
 
+    void AdvancePages()
+    {
+        this.FindChildByName<Node>("Page2").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightToLeft";
+    }
+
     ShaderMaterial CreatePageMat(string frontURL, string backURL, bool flipFrontHorizontally)
     {
         var ret = (ShaderMaterial)GD.Load<ShaderMaterial>("res://materials/PageMat.tres").Duplicate();
