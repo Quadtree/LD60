@@ -23,6 +23,7 @@ public partial class Manual : Node3D
         var ret = (ShaderMaterial)GD.Load<ShaderMaterial>("res://materials/PageMat.tres").Duplicate();
 
         ret.SetShaderParameter("texture_front", GD.Load<Texture2D>(frontURL));
+        ret.SetShaderParameter("texture_back", GD.Load<Texture2D>(backURL));
 
         return ret;
     }

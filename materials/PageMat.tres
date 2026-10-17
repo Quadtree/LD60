@@ -36,7 +36,14 @@ void vertex() {
 void fragment() {
 	vec2 base_uv = vec2(UV.y, UV.x);
 
-	vec4 albedo_tex = texture(texture_front, base_uv);
+	vec4 albedo_tex;
+	
+	if (FRONT_FACING){
+		albedo_tex = texture(texture_front, base_uv);
+	} else {
+		albedo_tex = texture(texture_back, base_uv);
+	}
+	
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
 
 	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
