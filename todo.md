@@ -1,4 +1,3 @@
-- Lose screen
 - Exiting stations
 - Pirate fighters actually move
 - Generate actual manual in Libreoffice
@@ -24,3 +23,4 @@
 - Flying to the pirate station
 - Destroy the pirate station, win
 - Win screen
+- Lose screen
