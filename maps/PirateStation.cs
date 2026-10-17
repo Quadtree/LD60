@@ -12,7 +12,10 @@ public partial class PirateStation : StaticBody3D
         if (Health <= 0)
         {
             QueueFree();
-            // @TODO: player wins game
+
+            var tree = GetTree();
+
+            CrawlScreen.PutUpCrawlScreen(this, "You destroyed the\npirate station and\nrecovered the gems!", () => tree.ChangeSceneToFile("res://maps/Default.tscn"));
         }
     }
 }
