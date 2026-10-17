@@ -18,12 +18,12 @@ public partial class ShipPC : CharacterBody3D
 
         if (!this.FindChildByType<Camera3D>().Current) return;
 
-        if (Input.IsActionPressed("left")) RotateY((float)(SpinRate * delta));
-        if (Input.IsActionPressed("right")) RotateY(-(float)(SpinRate * delta));
-        if (Input.IsActionPressed("forward")) RotateX(-(float)(SpinRate * delta));
-        if (Input.IsActionPressed("backward")) RotateX((float)(SpinRate * delta));
-        if (Input.IsActionPressed("spin_left")) RotateZ((float)(SpinRate * delta));
-        if (Input.IsActionPressed("spin_right")) RotateZ(-(float)(SpinRate * delta));
+        if (Input.IsActionPressed("left")) Rotate(GlobalTransform.Basis.Column1, (float)(SpinRate * delta));
+        if (Input.IsActionPressed("right")) Rotate(GlobalTransform.Basis.Column1, -(float)(SpinRate * delta));
+        if (Input.IsActionPressed("forward")) Rotate(GlobalTransform.Basis.Column0, -(float)(SpinRate * delta));
+        if (Input.IsActionPressed("backward")) Rotate(GlobalTransform.Basis.Column0, (float)(SpinRate * delta));
+        if (Input.IsActionPressed("spin_left")) Rotate(GlobalTransform.Basis.Column2, (float)(SpinRate * delta));
+        if (Input.IsActionPressed("spin_right")) Rotate(GlobalTransform.Basis.Column2, -(float)(SpinRate * delta));
 
         Vector3 desiredVelocity = Vector3.Zero;
 

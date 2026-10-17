@@ -137,7 +137,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5581, -1.19209e-07, -4.566
 [node name="ShipPC" type="CharacterBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.377, 0, 0)
 script = ExtResource("10_knjwl")
-SpinRate = 3.0
+SpinRate = 1.5
 MoveSpeed = 10.0
 Acceleration = 4.0
 
