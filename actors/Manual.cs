@@ -12,6 +12,7 @@ public partial class Manual : Node3D
             it.Layers = 2;
         }
 
-        this.FindChildByName<MeshInstance3D>("Page3").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightSide";
+        var page3 = this.FindChildByName<Node>("Page3");
+        page3.FindChildByType<AnimationPlayer>().CurrentAnimation = "RightSide";
     }
 }
