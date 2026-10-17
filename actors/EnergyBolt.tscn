@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://be2rccickq7tx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nt85"]
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r5tf2"]
+material = SubResource("StandardMaterial3D_8nt85")
+
+[node name="EnergyBolt" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.22522e-08, 1.53907, 0, -0.509071, -6.72749e-08, 0, 0, 0, 0.509071, 0, 0, 0)
+mesh = SubResource("CylinderMesh_r5tf2")
