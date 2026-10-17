@@ -26,6 +26,7 @@ public partial class ShipPC : CharacterBody3D
             this.FindParentByType<SubViewport>().AddChild(bolt);
             bolt.GlobalPosition = GlobalPosition;
             bolt.GlobalRotation = GlobalRotation;
+            FireCharge = 0;
         }
 
         FireCharge += (float)delta;

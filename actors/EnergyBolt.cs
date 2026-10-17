@@ -12,6 +12,9 @@ public partial class EnergyBolt : Node3D
     [Export]
     float Speed;
 
+    [Export]
+    float TimeToLive = 3;
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -26,5 +29,12 @@ public partial class EnergyBolt : Node3D
         }
 
         GlobalPosition += Vector3.Forward * Speed;
+
+        TimeToLive -= (float)delta;
+
+        if (TimeToLive <= 0)
+        {
+            QueueFree();
+        }
     }
 }
