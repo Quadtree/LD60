@@ -57,7 +57,7 @@ public partial class RobotFightUi : Control
 
         if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_win_fight"))
         {
-
+            PlayerWinsFight();
         }
     }
 
