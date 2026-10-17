@@ -13,6 +13,7 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 [node name="station1" parent="." instance=ExtResource("1_eectv")]
 
 [node name="Icosphere" parent="station1" index="0"]
+layers = 4
 surface_material_override/0 = ExtResource("2_7ytck")
 surface_material_override/1 = ExtResource("3_ntnoc")
 
