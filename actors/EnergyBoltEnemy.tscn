@@ -12,6 +12,7 @@ material = SubResource("StandardMaterial3D_t2cvd")
 [node name="EnergyBolt" instance=ExtResource("1_t2cvd")]
 CanHitPlayer = true
 Speed = 35.0
+TimeToLive = 10.0
 
 [node name="MeshInstance3D" parent="." index="0"]
 mesh = SubResource("CylinderMesh_2s0w4")

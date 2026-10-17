@@ -6,6 +6,8 @@ public partial class PirateFighter : AnimatableBody3D
     [Export]
     float Health;
 
+    float FireCharge;
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -23,6 +25,21 @@ public partial class PirateFighter : AnimatableBody3D
             //LookAt(GlobalPosition + nv);
 
             GlobalTransform = GlobalTransform.LookingAt(GlobalPosition + nv);
+
+            if (FireCharge >= 0.35f)
+            {
+                foreach (var sp in new float[] { 0 })
+                {
+                    var bolt = GD.Load<PackedScene>("res://actors/EnergyBoltEnemy.tscn").Instantiate<Node3D>();
+                    this.FindParentByType<SubViewport>().AddChild(bolt);
+                    bolt.GlobalPosition = GlobalPosition + GlobalTransform.Basis.Column0 * sp;
+                    bolt.GlobalRotation = GlobalRotation;
+                }
+
+                FireCharge = 0;
+            }
+
+            FireCharge += (float)delta;
         }
         else
         {
