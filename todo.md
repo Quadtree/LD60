@@ -1,6 +1,3 @@
-- Space mode, fly around
-  - Momentum
-  - Rise, fall
 - Attacks by pirates
 - Player weapons
 - Visit station #2
@@ -13,3 +10,9 @@
 - Generate actual manual in Libreoffice
 - Sound effects
 - Startup screen
+
+
+# DONE
+- Space mode, fly around
+  - Momentum
+  - Rise, fall
