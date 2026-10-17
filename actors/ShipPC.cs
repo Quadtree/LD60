@@ -65,6 +65,15 @@ public partial class ShipPC : CharacterBody3D
         }
 
         MoveAndSlide();
+
+        if (GetLastSlideCollision() != null && GetLastSlideCollision().GetCollisionCount() > 0)
+        {
+            if (GetLastSlideCollision().GetCollider(0) is Node3D node)
+            {
+                if (node.Name == "Station") this.FindParentByType<Default>().Station1Mode();
+                if (node.Name == "Station2") this.FindParentByType<Default>().Station2Mode();
+            }
+        }
     }
 
     public void TakeDamage(float amt)

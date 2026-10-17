@@ -33,14 +33,11 @@ public partial class Default : Control
 
         foreach (var stationEntry in new (StaticBody3D, object)[] {
             (this.FindChildByName<StaticBody3D>("Station"), null),
-            (this.FindChildByName<StaticBody3D>("Station"), null),
+            (this.FindChildByName<StaticBody3D>("Station2"), null),
         })
         {
             
         }
-
-        // entering station 1
-
     }
 
     public override void _Input(InputEvent @event)
