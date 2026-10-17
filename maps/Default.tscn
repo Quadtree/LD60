@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=34 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -12,12 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://b7p6gykf6545l" path="res://meshes/page1.glb" id="8_rxjgb"]
 [ext_resource type="PackedScene" uid="uid://c0fib67bnlsn1" path="res://actors/Asteroid.tscn" id="9_kvuol"]
 [ext_resource type="PackedScene" uid="uid://cbuokbvkd7fnt" path="res://actors/Station.tscn" id="9_yw211"]
+[ext_resource type="LabelSettings" uid="uid://dmt6pc0s8m0j6" path="res://ui/DefaultLabelSettings.tres" id="10_0tign"]
 [ext_resource type="Script" uid="uid://d02udybt8mtt0" path="res://actors/ShipPC.cs" id="10_knjwl"]
 [ext_resource type="Material" uid="uid://dk22m6fao1iym" path="res://materials/BronzeStationShell.tres" id="12_gqor7"]
 [ext_resource type="Texture2D" uid="uid://5la054olky1t" path="res://textures/starfield1.png" id="12_j1mvy"]
 [ext_resource type="Script" uid="uid://c143ccvumkxbe" path="res://actors/SkySphere.cs" id="13_2dvic"]
 [ext_resource type="PackedScene" uid="uid://cgnsovydx2hsg" path="res://actors/PirateFighter.tscn" id="14_lr4ce"]
-[ext_resource type="FontFile" uid="uid://cbaugvydytq6k" path="res://fonts/RobotoMono-VariableFont_wght.ttf" id="16_aomgn"]
 [ext_resource type="PackedScene" uid="uid://c1hk1dvnhrcrs" path="res://meshes/pirate_robot.glb" id="16_lmt8x"]
 [ext_resource type="Script" uid="uid://brbd65qvjgym0" path="res://maps/RobotFightStart.cs" id="17_0tign"]
 [ext_resource type="Script" uid="uid://b8j2ujvu3bvaw" path="res://maps/ShipLocationLabel.cs" id="17_lmt8x"]
@@ -39,16 +39,6 @@ texture_filter = 0
 material = SubResource("StandardMaterial3D_2dvic")
 radius = 100.0
 height = 500.0
-
-[sub_resource type="FontVariation" id="FontVariation_lmt8x"]
-base_font = ExtResource("16_aomgn")
-variation_opentype = {
-2003265652: 300
-}
-
-[sub_resource type="LabelSettings" id="LabelSettings_0tign"]
-font = SubResource("FontVariation_lmt8x")
-font_size = 12
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
@@ -199,7 +189,7 @@ texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0
 text = "SOME TEXT"
-label_settings = SubResource("LabelSettings_0tign")
+label_settings = ExtResource("10_0tign")
 script = ExtResource("17_lmt8x")
 
 [node name="InStationMode" type="Node3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
@@ -275,6 +265,47 @@ current = true
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
 transform = Transform3D(0.354911, 0, -0.9349, 0, 1, 0, 0.9349, 0, 0.354911, -6.05787, 0, 0)
 layers = 5
+
+[node name="RobotFightUI" type="Control" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/RobotFightUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 42.8826
+offset_top = 116.622
+offset_right = 151.883
+offset_bottom = 153.622
+text = "Keys
+U-1 F-2 J-3 L-4"
+label_settings = ExtResource("10_0tign")
+horizontal_alignment = 1
+
+[node name="OutcomeLabel" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/RobotFightUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 44.573
+offset_top = 62.6667
+offset_right = 153.573
+offset_bottom = 99.6667
+text = "U vs J
+J wins!"
+label_settings = ExtResource("10_0tign")
+horizontal_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/RobotFightUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 43.1495
+offset_top = 17.1556
+offset_right = 152.149
+offset_bottom = 54.1556
+text = "You=10 Robot=20"
+label_settings = ExtResource("10_0tign")
+horizontal_alignment = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
