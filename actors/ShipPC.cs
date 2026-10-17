@@ -74,7 +74,7 @@ public partial class ShipPC : CharacterBody3D
         {
             var tree = GetTree();
 
-            CrawlScreen.PutUpCrawlScreen(this, "You destroyed the\npirate station and\nrecovered the gems!", () => tree.ChangeSceneToFile("res://maps/Default.tscn"));
+            CrawlScreen.PutUpCrawlScreen(this, "You have been\ndestroyed!", () => tree.ChangeSceneToFile("res://maps/Default.tscn"));
         }
     }
 }
