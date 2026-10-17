@@ -9,11 +9,13 @@ public partial class InStationPC : CharacterBody3D
     [Export]
     float MoveSpeed;
 
+    public bool Frozen = false;
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
 
-        if (!this.FindChildByType<Camera3D>().Current) return;
+        if (!this.FindChildByType<Camera3D>().Current || Frozen) return;
 
         if (Input.IsActionPressed("left")) RotateY((float)(SpinRate * delta));
         if (Input.IsActionPressed("right")) RotateY(-(float)(SpinRate * delta));

@@ -20,7 +20,7 @@ public partial class PirateFighter : AnimatableBody3D
 
             var nv = currentVector.Slerp(targetVector, (float)(0.7 * delta));
 
-            GD.Print($"targetVector={targetVector} nv={nv}");
+            //GD.Print($"targetVector={targetVector} nv={nv}");
 
             //LookAt(GlobalPosition + nv);
 

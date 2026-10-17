@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=36 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cgnsovydx2hsg" path="res://actors/PirateFighter.tscn" id="14_lr4ce"]
 [ext_resource type="FontFile" uid="uid://cbaugvydytq6k" path="res://fonts/RobotoMono-VariableFont_wght.ttf" id="16_aomgn"]
 [ext_resource type="PackedScene" uid="uid://c1hk1dvnhrcrs" path="res://meshes/pirate_robot.glb" id="16_lmt8x"]
+[ext_resource type="Script" uid="uid://brbd65qvjgym0" path="res://maps/RobotFightStart.cs" id="17_0tign"]
 [ext_resource type="Script" uid="uid://b8j2ujvu3bvaw" path="res://maps/ShipLocationLabel.cs" id="17_lmt8x"]
 
 [sub_resource type="Environment" id="Environment_q1grt"]
@@ -244,10 +245,15 @@ shape = SubResource("ConcavePolygonShape3D_hlrh3")
 [node name="Station2EntryExitPoint" type="Node3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.508, 0, 15.3974)
 
+[node name="Station2EntryExitPoint2" type="Node3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.5352, 0.256357, -9.6205)
+
 [node name="pirate_robot" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2" instance=ExtResource("16_lmt8x")]
 transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -51.1627, 0, -18.4168)
 
 [node name="RobotFightStart" type="Area3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.48736)
+script = ExtResource("17_0tign")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2/RobotFightStart"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.6784, 0, -19.0152)

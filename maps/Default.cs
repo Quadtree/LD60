@@ -18,7 +18,7 @@ public partial class Default : Control
 
         if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_station_2"))
         {
-            Station2Mode();
+            Station2CheatMode();
         }
     }
 
@@ -46,6 +46,17 @@ public partial class Default : Control
         var pc = this.FindChildByType<InStationPC>();
 
         var entryExit = this.FindChildByName<Node3D>("Station2EntryExitPoint");
+
+        pc.GlobalPosition = entryExit.GlobalPosition;
+    }
+
+    public void Station2CheatMode()
+    {
+        StationMode();
+
+        var pc = this.FindChildByType<InStationPC>();
+
+        var entryExit = this.FindChildByName<Node3D>("Station2EntryExitPoint2");
 
         pc.GlobalPosition = entryExit.GlobalPosition;
     }
