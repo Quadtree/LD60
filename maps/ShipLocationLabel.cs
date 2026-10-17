@@ -9,9 +9,14 @@ public partial class ShipLocationLabel : Label
 
         if (this.FindParentByType<SubViewport>().FindChildByType<ShipPC>() is ShipPC pc)
         {
-            Text = $"{Mathf.RoundToInt((pc.Position.X + 100) / 10):000}{Mathf.RoundToInt((-pc.Position.Z + 100) / 10):000}";
+            Text = LocToSector(pc.Position);
         }
 
         Visible = GetViewport().GetCamera3D().GetParent() is ShipPC;
+    }
+
+    public static string LocToSector(Vector3 loc)
+    {
+        return $"{Mathf.RoundToInt((loc.X + 100) / 10):000}{Mathf.RoundToInt((-loc.Z + 100) / 10):000}";
     }
 }

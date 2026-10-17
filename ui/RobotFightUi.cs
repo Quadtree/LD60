@@ -116,6 +116,43 @@ public partial class RobotFightUi : Control
     void PlayerWinsFight()
     {
         foreach (var it in this.FindChildrenByType<Label>()) it.Visible = false;
+
+        this.FindParentByType<Viewport>().FindChildByName<Label>("EncryptedCoordinates").Visible = true;
+        this.FindParentByType<Viewport>().FindChildByName<Label>("EncryptedCoordinates").Text = $"You get encrypted\ncoordinates!\n{EncryptWithPirateCode(ShipLocationLabel.LocToSector(GetTree().CurrentScene.FindChildByName<Node3D>("PirateStation").Position))}";
+
+        GetTree().CurrentScene.FindChildByType<InStationPC>().Frozen = false;
+    }
+
+    string EncryptWithPirateCode(string s)
+    {
+        var PIRATE_CODE = new (char, char)[]{
+            ('0', 'J'),
+            ('1', 'B'),
+            ('2', 'X'),
+            ('3', 'E'),
+            ('4', 'U'),
+            ('5', 'A'),
+            ('6', 'Q'),
+            ('7', 'Z'),
+            ('8', 'L'),
+            ('9', 'S'),
+        };
+
+        var ret = "";
+
+        foreach (var it in s)
+        {
+            foreach (var ce in PIRATE_CODE)
+            {
+                if (ce.Item1 == it)
+                {
+                    ret += ce.Item2;
+                    break;
+                }
+            }
+        }
+
+        return ret;
     }
 
     void UpdateBoxes()
