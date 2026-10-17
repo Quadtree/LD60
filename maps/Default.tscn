@@ -1,13 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=13 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
 [ext_resource type="PackedScene" uid="uid://cttye28ews5xo" path="res://meshes/station_interior_2.glb" id="2_6jlvn"]
 [ext_resource type="Script" uid="uid://ba1n8xmeatupu" path="res://actors/InStationPC.cs" id="3_hlrh3"]
+[ext_resource type="Material" uid="uid://cy6ybdcx1sj53" path="res://materials/Walls1.tres" id="4_o8hxr"]
+[ext_resource type="Material" uid="uid://cqjac837lrxmh" path="res://materials/Floor1.tres" id="4_vnah1"]
+[ext_resource type="Material" uid="uid://yxjvkv7gsk4t" path="res://materials/Ceiling1.tres" id="5_o8hxr"]
+[ext_resource type="Material" uid="uid://d15md0xx0ebn" path="res://materials/Space1.tres" id="7_6m16o"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
 [sub_resource type="Environment" id="Environment_q1grt"]
 background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.696886, 0.696886, 0.696886, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hlrh3"]
 
@@ -71,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.896, 3, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0241, 0.837641, 0)
 script = ExtResource("3_hlrh3")
 SpinRate = 3.0
-MoveSpeed = 4.0
+MoveSpeed = 7.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/InStationPC"]
 shape = SubResource("CapsuleShape3D_hlrh3")
@@ -84,6 +90,12 @@ current = true
 
 [node name="station_interior_2" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/StaticBody3D" instance=ExtResource("2_6jlvn")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -40.56, 1.5, 0)
+
+[node name="Cube" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/StaticBody3D/station_interior_2" index="0"]
+surface_material_override/0 = ExtResource("5_o8hxr")
+surface_material_override/1 = ExtResource("4_o8hxr")
+surface_material_override/2 = ExtResource("4_vnah1")
+surface_material_override/3 = ExtResource("7_6m16o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/StaticBody3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 11.1217, -40.56, 1.5, 0)
