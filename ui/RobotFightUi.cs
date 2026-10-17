@@ -50,14 +50,19 @@ public partial class RobotFightUi : Control
     {
         base._Input(@event);
 
-        if (@event.IsActionPressed("fight_1")) MakeFightMove(Moves.Uppercut);
-        if (@event.IsActionPressed("fight_2")) MakeFightMove(Moves.Feint);
-        if (@event.IsActionPressed("fight_3")) MakeFightMove(Moves.Jab);
-        if (@event.IsActionPressed("fight_4")) MakeFightMove(Moves.Laser);
-
-        if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_win_fight"))
+        if (Visible)
         {
-            PlayerWinsFight();
+            this.FindParentByType<Viewport>()?.FindChildByType<RobotFightStart>()?.QueueFree();
+
+            if (@event.IsActionPressed("fight_1")) MakeFightMove(Moves.Uppercut);
+            if (@event.IsActionPressed("fight_2")) MakeFightMove(Moves.Feint);
+            if (@event.IsActionPressed("fight_3")) MakeFightMove(Moves.Jab);
+            if (@event.IsActionPressed("fight_4")) MakeFightMove(Moves.Laser);
+
+            if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_win_fight"))
+            {
+                PlayerWinsFight();
+            }
         }
     }
 
@@ -110,7 +115,7 @@ public partial class RobotFightUi : Control
 
     void PlayerWinsFight()
     {
-
+        foreach (var it in this.FindChildrenByType<Label>()) it.Visible = false;
     }
 
     void UpdateBoxes()
