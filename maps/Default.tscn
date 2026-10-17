@@ -321,7 +321,7 @@ text = "You=10 Robot=20"
 label_settings = ExtResource("10_0tign")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
+[node name="EncryptedCoordinates" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
 texture_filter = 1
 offset_left = 27.4911
 offset_top = 37.0667
