@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=37 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -40,6 +40,13 @@ texture_filter = 0
 material = SubResource("StandardMaterial3D_2dvic")
 radius = 100.0
 height = 500.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4pk5"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ktqxq"]
+material = SubResource("StandardMaterial3D_t4pk5")
+size = Vector3(10, 10, 10)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
@@ -108,7 +115,7 @@ render_target_update_mode = 4
 environment = SubResource("Environment_q1grt")
 
 [node name="InSpaceMode" type="Node3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20000, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23248, 20000, 71.9774)
 
 [node name="Asteroid1" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5092, 0, -13.213)
@@ -184,6 +191,10 @@ script = ExtResource("13_2dvic")
 
 [node name="PirateFighter" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("14_lr4ce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6547, 0, -59.4882)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.3443, 0, -315.271)
+mesh = SubResource("BoxMesh_ktqxq")
 
 [node name="ShipLocationLabel" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
 texture_filter = 1
@@ -309,6 +320,17 @@ offset_bottom = 54.1556
 text = "You=10 Robot=20"
 label_settings = ExtResource("10_0tign")
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
+texture_filter = 1
+offset_left = 27.4911
+offset_top = 37.0667
+offset_right = 167.491
+offset_bottom = 117.067
+text = "You get encrypted
+coordinates!
+"
+label_settings = ExtResource("10_0tign")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
