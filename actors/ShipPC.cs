@@ -12,11 +12,23 @@ public partial class ShipPC : CharacterBody3D
     [Export]
     float Acceleration = 1;
 
+    float FireCharge;
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
 
         if (!this.FindChildByType<Camera3D>().Current) return;
+
+        if (Input.IsActionPressed("fire") && FireCharge >= 0.35f)
+        {
+            var bolt = GD.Load<PackedScene>("res://actors/EnergyBoltPlayer.tscn").Instantiate<Node3D>();
+            this.FindParentByType<SubViewport>().AddChild(bolt);
+            bolt.GlobalPosition = GlobalPosition;
+            bolt.GlobalRotation = GlobalRotation;
+        }
+
+        FireCharge += (float)delta;
 
         if (Input.IsActionPressed("left")) Rotate(GlobalTransform.Basis.Column1, (float)(SpinRate * delta));
         if (Input.IsActionPressed("right")) Rotate(GlobalTransform.Basis.Column1, -(float)(SpinRate * delta));
