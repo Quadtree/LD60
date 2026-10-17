@@ -23,17 +23,18 @@ public partial class Manual : Node3D
 
     void UpdatePages()
     {
-        this.FindChildByName<Node>("Page1").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber}.png", $"res://textures/manpages/page{currentPageNumber - 1}.png");
-        this.FindChildByName<Node>("Page2").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber + 2}.png", $"res://textures/manpages/page{currentPageNumber + 1}.png");
+        this.FindChildByName<Node>("Page1").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber}.png", $"res://textures/manpages/page{currentPageNumber - 1}.png", true);
+        this.FindChildByName<Node>("Page2").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber + 2}.png", $"res://textures/manpages/page{currentPageNumber + 1}.png", false);
         //this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber}.png", $"res://textures/manpages/page{currentPageNumber + 1}.png");
     }
 
-    ShaderMaterial CreatePageMat(string frontURL, string backURL)
+    ShaderMaterial CreatePageMat(string frontURL, string backURL, bool flipFrontHorizontally)
     {
         var ret = (ShaderMaterial)GD.Load<ShaderMaterial>("res://materials/PageMat.tres").Duplicate();
 
         ret.SetShaderParameter("texture_front", GD.Load<Texture2D>(frontURL));
         ret.SetShaderParameter("texture_back", GD.Load<Texture2D>(backURL));
+        ret.SetShaderParameter("flip_front_horizontally", flipFrontHorizontally);
 
         return ret;
     }

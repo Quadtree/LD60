@@ -23,6 +23,7 @@ uniform float metallic : hint_range(0.0, 1.0, 0.01);
 
 uniform sampler2D texture_front : source_color, filter_linear_mipmap, repeat_enable;
 uniform sampler2D texture_back : source_color, filter_linear_mipmap, repeat_enable;
+uniform bool flip_front_horizontally;
 
 uniform vec3 uv1_scale;
 uniform vec3 uv1_offset;
@@ -39,6 +40,7 @@ void fragment() {
 	vec4 albedo_tex;
 	
 	if (FRONT_FACING){
+		if (flip_front_horizontally) base_uv = vec2(1.0 - base_uv.x, base_uv.y);
 		albedo_tex = texture(texture_front, base_uv);
 	} else {
 		albedo_tex = texture(texture_back, base_uv);
@@ -67,6 +69,7 @@ shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
+shader_parameter/flip_front_horizontally = false
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
