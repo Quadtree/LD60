@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=8 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
 [ext_resource type="PackedScene" uid="uid://cttye28ews5xo" path="res://meshes/station_interior_2.glb" id="2_6jlvn"]
+[ext_resource type="Script" uid="uid://ba1n8xmeatupu" path="res://actors/InStationPC.cs" id="3_hlrh3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
@@ -66,13 +67,15 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -40.56, 1.5, 0)
 [node name="Node3D" type="Node3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.896, 3, 0)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
+[node name="InStationPC" type="CharacterBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0241, 0.837641, 0)
+script = ExtResource("3_hlrh3")
+SpinRate = 3.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/InStationPC"]
 shape = SubResource("CapsuleShape3D_hlrh3")
 
-[node name="Camera3D" type="Camera3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/CharacterBody3D"]
+[node name="Camera3D" type="Camera3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/InStationPC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.734021, 0)
 current = true
 
