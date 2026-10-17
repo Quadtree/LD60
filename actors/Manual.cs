@@ -3,6 +3,11 @@ using Godot;
 
 public partial class Manual : Node3D
 {
+    [Export]
+    float AnimSpeed = 3;
+
+    Node3D Riser;
+
     int currentPageNumber = 1;
 
     AnimationPlayer TrackedAnimationPlayer;
@@ -17,6 +22,10 @@ public partial class Manual : Node3D
             it.Layers = 2;
         }
 
+        this.FindChildByName<Node>("Page1").FindChildByType<AnimationPlayer>().SpeedScale = AnimSpeed;
+        this.FindChildByName<Node>("Page2").FindChildByType<AnimationPlayer>().SpeedScale = AnimSpeed;
+        this.FindChildByName<Node>("Page3").FindChildByType<AnimationPlayer>().SpeedScale = AnimSpeed;
+
         UpdatePages();
     }
 
@@ -28,25 +37,54 @@ public partial class Manual : Node3D
         {
             AdvancePages();
         }
+
+        if (@event.IsActionPressed("retreat_manual"))
+        {
+            RetreatPages();
+        }
     }
 
     void UpdatePages()
     {
+        this.FindChildByName<Node3D>("Page1").Position = new Vector3(0, 0.081f, 0);
+        this.FindChildByName<Node3D>("Page2").Position = new Vector3(0, 0.081f, 0);
+        this.FindChildByName<Node3D>("Page3").Position = new Vector3(0, 0.081f, 0);
+
+        this.FindChildByName<Node>("Page1").FindChildByType<AnimationPlayer>().CurrentAnimation = "LeftSide";
         this.FindChildByName<Node>("Page2").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightSide";
-        this.FindChildByName<Node>("Page3").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightSide";
         this.FindChildByName<Node3D>("Page3").Visible = false;
 
         this.FindChildByName<Node>("Page1").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber}.png", $"res://textures/manpages/page{currentPageNumber - 1}.png", true, false);
         this.FindChildByName<Node>("Page2").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber + 2}.png", $"res://textures/manpages/page{currentPageNumber + 1}.png", true, false);
-        this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber + 4}.png", $"res://textures/manpages/page{currentPageNumber + 3}.png", false, false);
     }
 
     void AdvancePages()
     {
+        if (currentPageNumber >= 4) return;
+
         this.FindChildByName<Node>("Page2").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightToLeft";
+        Riser = this.FindChildByName<Node3D>("Page2");
+        //this.FindChildByName<Node3D>("Page2").Position = new Vector3(0, 0.15f, 0);
         TrackedAnimationPlayer = this.FindChildByName<Node>("Page2").FindChildByType<AnimationPlayer>();
         CurrentMovement = 1;
 
+        this.FindChildByName<Node>("Page3").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightSide";
+        this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber + 4}.png", $"res://textures/manpages/page{currentPageNumber + 3}.png", false, false);
+        this.FindChildByName<Node3D>("Page3").Visible = true;
+    }
+
+    void RetreatPages()
+    {
+        if (currentPageNumber <= 1) return;
+
+        this.FindChildByName<Node>("Page1").FindChildByType<AnimationPlayer>().CurrentAnimation = "LeftToRight";
+        Riser = this.FindChildByName<Node3D>("Page1");
+        //this.FindChildByName<Node3D>("Page1").Position = new Vector3(0, 0.15f, 0);
+        TrackedAnimationPlayer = this.FindChildByName<Node>("Page1").FindChildByType<AnimationPlayer>();
+        CurrentMovement = -1;
+
+        this.FindChildByName<Node>("Page3").FindChildByType<AnimationPlayer>().CurrentAnimation = "LeftSide";
+        this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber - 2}.png", $"res://textures/manpages/page{currentPageNumber - 1}.png", true, false);
         this.FindChildByName<Node3D>("Page3").Visible = true;
     }
 
@@ -57,22 +95,53 @@ public partial class Manual : Node3D
         if (TrackedAnimationPlayer != null)
         {
             GD.Print(TrackedAnimationPlayer.CurrentAnimationPosition);
-            if (TrackedAnimationPlayer.CurrentAnimationPosition >= 2.4f)
+            if (TrackedAnimationPlayer.CurrentAnimationPosition >= 2.4f && CurrentMovement == 1)
             {
                 currentPageNumber += 2;
                 UpdatePages();
 
                 CurrentMovement = 0;
+                TrackedAnimationPlayer = null;
+            }
+            else if (TrackedAnimationPlayer.CurrentAnimationPosition >= 2.4f && CurrentMovement == -1)
+            {
+                currentPageNumber -= 2;
+                UpdatePages();
+
+                CurrentMovement = 0;
+                TrackedAnimationPlayer = null;
             }
         }
+
+        if (TrackedAnimationPlayer != null && Riser != null && Riser.Position.Y < 0.15f)
+        {
+            Riser.Position += Vector3.Up * (float)delta * .5f;
+        }
+        // else
+        // {
+        //     for (int i = 0; i < 3; ++i)
+        //     {
+        //         var n = this.FindChildByName<Node3D>($"Page{i + 1}");
+        //         if (n.Position.Y > 0.081f)
+        //         {
+        //             n.Position += Vector3.Down * (float)delta * .5f;
+        //         }
+        //         else
+        //         {
+        //             n.Position = new Vector3(0, 0.081f, 0);
+        //         }
+        //     }
+        // }
+
+
     }
 
     ShaderMaterial CreatePageMat(string frontURL, string backURL, bool flipFrontHorizontally, bool flipBackHorizontally)
     {
         var ret = (ShaderMaterial)GD.Load<ShaderMaterial>("res://materials/PageMat.tres").Duplicate();
 
-        ret.SetShaderParameter("texture_front", GD.Load<Texture2D>(frontURL));
-        ret.SetShaderParameter("texture_back", GD.Load<Texture2D>(backURL));
+        if (ResourceLoader.Exists(frontURL)) ret.SetShaderParameter("texture_front", GD.Load<Texture2D>(frontURL));
+        if (ResourceLoader.Exists(backURL)) ret.SetShaderParameter("texture_back", GD.Load<Texture2D>(backURL));
         ret.SetShaderParameter("flip_front_horizontally", flipFrontHorizontally);
         ret.SetShaderParameter("flip_back_horizontally", flipBackHorizontally);
 
