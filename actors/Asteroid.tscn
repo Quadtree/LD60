@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0fib67bnlsn1"]
+
+[ext_resource type="Script" uid="uid://bb7bh033nuvd" path="res://actors/Asteroid.cs" id="1_3b4jy"]
+[ext_resource type="PackedScene" uid="uid://c00qiq8eadbi2" path="res://meshes/asteroid1.glb" id="1_fckj7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fckj7"]
+shading_mode = 2
+albedo_color = Color(0.690196, 0.690196, 0.823529, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fckj7"]
+data = PackedVector3Array(0, -0.7222, 0, -0.1382, -0.2236, 0.4253, 1.0854, -0.6708, 0.7886, 1.0854, -0.6708, 0.7886, 0.603, -0.3727, -0.4381, 0, -0.7222, 0, 0, -0.7222, 0, -0.4472, -0.2236, 0, -0.1382, -0.2236, 0.4253, 0, -0.7222, 0, -0.3225, -0.5218, -0.9924, -0.4472, -0.2236, 0, 0, -0.7222, 0, 0.603, -0.3727, -0.4381, -0.3225, -0.5218, -0.9924, 1.0854, -0.6708, 0.7886, 1.0435, 0.5218, 0, 0.603, -0.3727, -0.4381, -0.1382, -0.2236, 0.4253, 0.1382, 0.2236, 0.4253, 1.0854, -0.6708, 0.7886, -0.4472, -0.2236, 0, -0.3618, 0.2236, 0.2628, -0.1382, -0.2236, 0.4253, -0.3225, -0.5218, -0.9924, -0.4422, 0.2733, -0.3213, -0.4472, -0.2236, 0, 0.603, -0.3727, -0.4381, 0.1996, 0.323, -0.6144, -0.3225, -0.5218, -0.9924, 1.0854, -0.6708, 0.7886, 0.1382, 0.2236, 0.4253, 1.0435, 0.5218, 0, -0.1382, -0.2236, 0.4253, -0.3618, 0.2236, 0.2628, 0.1382, 0.2236, 0.4253, -0.4472, -0.2236, 0, -0.4422, 0.2733, -0.3213, -0.3618, 0.2236, 0.2628, -0.3225, -0.5218, -0.9924, 0.1996, 0.323, -0.6144, -0.4422, 0.2733, -0.3213, 0.603, -0.3727, -0.4381, 1.0435, 0.5218, 0, 0.1996, 0.323, -0.6144, 0.1382, 0.2236, 0.4253, 0, 0.5, 0, 1.0435, 0.5218, 0, -0.3618, 0.2236, 0.2628, 0, 0.5, 0, 0.1382, 0.2236, 0.4253, -0.4422, 0.2733, -0.3213, 0, 0.5, 0, -0.3618, 0.2236, 0.2628, 0.1996, 0.323, -0.6144, 0, 0.5, 0, -0.4422, 0.2733, -0.3213, 1.0435, 0.5218, 0, 0, 0.5, 0, 0.1996, 0.323, -0.6144)
+
+[node name="Asteroid" type="StaticBody3D"]
+script = ExtResource("1_3b4jy")
+
+[node name="asteroid1" parent="." instance=ExtResource("1_fckj7")]
+
+[node name="Icosphere" parent="asteroid1" index="0"]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_fckj7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_fckj7")
+
+[editable path="asteroid1"]

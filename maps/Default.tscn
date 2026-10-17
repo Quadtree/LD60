@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=22 format=3 uid="uid://cmtpsxxifciwk"]
 
+[ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
 [ext_resource type="PackedScene" uid="uid://cttye28ews5xo" path="res://meshes/station_interior_2.glb" id="2_6jlvn"]
 [ext_resource type="Script" uid="uid://ba1n8xmeatupu" path="res://actors/InStationPC.cs" id="3_hlrh3"]
@@ -10,6 +11,9 @@
 [ext_resource type="Script" uid="uid://bcnw0o05jdbjl" path="res://ui/ManualViewport.cs" id="8_bd0q3"]
 [ext_resource type="Script" uid="uid://2xc0qjtahp2e" path="res://actors/Manual.cs" id="8_dfir2"]
 [ext_resource type="PackedScene" uid="uid://b7p6gykf6545l" path="res://meshes/page1.glb" id="8_rxjgb"]
+[ext_resource type="PackedScene" uid="uid://c0fib67bnlsn1" path="res://actors/Asteroid.tscn" id="9_kvuol"]
+[ext_resource type="PackedScene" uid="uid://cbuokbvkd7fnt" path="res://actors/Station.tscn" id="9_yw211"]
+[ext_resource type="Script" uid="uid://d02udybt8mtt0" path="res://actors/ShipPC.cs" id="10_knjwl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
@@ -39,6 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_adt7c")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -74,6 +79,7 @@ mesh = SubResource("CapsuleMesh_an2ui")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
 transform = Transform3D(0.354911, 0, -0.9349, 0, 1, 0, 0.9349, 0, 0.354911, -6.05787, 0, 0)
+layers = 5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
 environment = SubResource("Environment_q1grt")
@@ -109,14 +115,24 @@ surface_material_override/3 = ExtResource("7_6m16o")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 11.1217, -40.56, 1.5, 0)
 shape = SubResource("ConcavePolygonShape3D_hlrh3")
 
-[node name="ShipPC" type="CharacterBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.377, 0, 0)
+[node name="InSpaceMode" type="Node3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20000, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/ShipPC"]
+[node name="Asteroid1" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_kvuol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5581, -1.19209e-07, -4.56682)
+
+[node name="ShipPC" type="CharacterBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.377, 0, 0)
+script = ExtResource("10_knjwl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/ShipPC"]
 shape = SubResource("SphereShape3D_bd0q3")
 
-[node name="Camera3D" type="Camera3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/ShipPC"]
+[node name="Camera3D" type="Camera3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/ShipPC"]
 cull_mask = 1047556
+
+[node name="Station" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_yw211")]
+transform = Transform3D(18.4835, 0, 7.63948, 0, 20, 0, -7.63948, 0, 18.4835, 21.9826, 0, 21.7852)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
