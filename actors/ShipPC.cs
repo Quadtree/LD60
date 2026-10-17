@@ -63,4 +63,9 @@ public partial class ShipPC : CharacterBody3D
 
         MoveAndSlide();
     }
+
+    public void TakeDamage(float amt)
+    {
+        // @TODO
+    }
 }

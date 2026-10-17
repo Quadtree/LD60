@@ -15,19 +15,35 @@ public partial class EnergyBolt : Node3D
     [Export]
     float TimeToLive = 3;
 
+    public override void _Ready()
+    {
+        base._Ready();
+
+        this.FindChildByType<Area3D>().BodyEntered += HitSomething;
+    }
+
+    void HitSomething(Node3D thing)
+    {
+        GD.Print($"We've hit {thing}");
+
+        if (CanHitEnemy && thing is PirateFighter pf) pf.TakeDamage(1);
+        if (CanHitEnemy && thing is PirateStation ps) ps.TakeDamage(1);
+        if (CanHitPlayer && thing is ShipPC sp) sp.TakeDamage(1);
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
 
-        foreach (var it in GetTree().CurrentScene.FindChildrenByPredicate<Node3D>(it => (CanHitPlayer && it is ShipPC) || (CanHitEnemy && it is PirateFighter)))
-        {
-            if (it.GlobalPosition.DistanceTo(GlobalPosition) < 2)
-            {
-                QueueFree();
-                if (it is PirateFighter pf) pf.TakeDamage(1);
-                return;
-            }
-        }
+        // foreach (var it in GetTree().CurrentScene.FindChildrenByPredicate<Node3D>(it => (CanHitPlayer && it is ShipPC) || (CanHitEnemy && it is PirateFighter)))
+        // {
+        //     if (it.GlobalPosition.DistanceTo(GlobalPosition) < 2)
+        //     {
+        //         QueueFree();
+        //         if (it is PirateFighter pf) pf.TakeDamage(1);
+        //         return;
+        //     }
+        // }
 
         GlobalPosition += -GlobalTransform.Basis.Column2 * Speed * (float)delta;
 

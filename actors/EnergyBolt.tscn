@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://be2rccickq7tx"]
+[gd_scene load_steps=5 format=3 uid="uid://be2rccickq7tx"]
 
 [ext_resource type="Script" uid="uid://ymek8bhr5djw" path="res://actors/EnergyBolt.cs" id="1_r5tf2"]
 
@@ -8,6 +8,9 @@ shading_mode = 0
 [sub_resource type="CylinderMesh" id="CylinderMesh_r5tf2"]
 material = SubResource("StandardMaterial3D_8nt85")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_r5tf2"]
+height = 8.0
+
 [node name="EnergyBolt" type="Node3D"]
 script = ExtResource("1_r5tf2")
 
@@ -15,3 +18,9 @@ script = ExtResource("1_r5tf2")
 transform = Transform3D(9.72675e-16, -6.72749e-08, -0.509071, -0.509071, -6.72749e-08, 0, -2.22522e-08, 1.53907, -2.22522e-08, 0, 0, 0)
 layers = 7
 mesh = SubResource("CylinderMesh_r5tf2")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_r5tf2")
