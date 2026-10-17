@@ -1,4 +1,5 @@
 - Lose screen
+- Exiting stations
 - Generate actual manual in Libreoffice
 - Sound effects
 - Rise and fall in space mode
