@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=15 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
 [ext_resource type="PackedScene" uid="uid://cttye28ews5xo" path="res://meshes/station_interior_2.glb" id="2_6jlvn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://cqjac837lrxmh" path="res://materials/Floor1.tres" id="4_vnah1"]
 [ext_resource type="Material" uid="uid://yxjvkv7gsk4t" path="res://materials/Ceiling1.tres" id="5_o8hxr"]
 [ext_resource type="Material" uid="uid://d15md0xx0ebn" path="res://materials/Space1.tres" id="7_6m16o"]
+[ext_resource type="PackedScene" uid="uid://b7p6gykf6545l" path="res://meshes/page1.glb" id="8_rxjgb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
@@ -23,7 +24,7 @@ data = PackedVector3Array(0.9997, 1, -0.6744, -0.2266, 1, -0.1349, 0.9997, 1, -0
 [sub_resource type="TorusMesh" id="TorusMesh_q1grt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6m16o"]
-size = Vector3(1, 0.1, 1.5)
+size = Vector3(1, 0.03, 1.5)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -130,18 +131,29 @@ transform = Transform3D(1, 0, 0, 0, -0.264462, 0.964396, 0, -0.964396, -0.264462
 layers = 2
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/BookViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64187, 0.270652, 2.98469)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.33695, -0.213609, 2.10247)
 cull_mask = 1048574
 
 [node name="Manual" type="Node3D" parent="SubViewportContainer/BookViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.86834, -0.834291, 0)
+transform = Transform3D(1, 0, 0, 0, 0.443431, -0.896308, 0, 0.896308, 0.443431, 9.86834, -0.834291, 0)
 
 [node name="LeftCover" type="MeshInstance3D" parent="SubViewportContainer/BookViewport/Manual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+layers = 2
 mesh = SubResource("BoxMesh_6m16o")
 
 [node name="RightCover" type="MeshInstance3D" parent="SubViewportContainer/BookViewport/Manual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+layers = 2
 mesh = SubResource("BoxMesh_6m16o")
+
+[node name="Page1" parent="SubViewportContainer/BookViewport/Manual" instance=ExtResource("8_rxjgb")]
+transform = Transform3D(-3.27835e-08, 0, -0.5, 0, 0.75, 0, 0.75, 0, -2.18557e-08, 0, 0.0806551, 0)
+
+[node name="Page2" parent="SubViewportContainer/BookViewport/Manual" instance=ExtResource("8_rxjgb")]
+transform = Transform3D(-3.27835e-08, 0, -0.5, 0, 0.75, 0, 0.75, 0, -2.18557e-08, 0, 0.0806551, 0)
+
+[node name="Page3" parent="SubViewportContainer/BookViewport/Manual" instance=ExtResource("8_rxjgb")]
+transform = Transform3D(-3.27835e-08, 0, -0.5, 0, 0.75, 0, 0.75, 0, -2.18557e-08, 0, 0.0806551, 0)
 
 [editable path="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/StaticBody3D/station_interior_2"]
