@@ -1,4 +1,6 @@
 - Space mode, fly around
+  - Momentum
+  - Rise, fall
 - Attacks by pirates
 - Visit station #2
 - Boxing the robot
