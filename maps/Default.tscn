@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=35 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -61,6 +61,9 @@ data = PackedVector3Array(0.9997, 1, -0.6744, -0.2266, 1, -0.1349, 0.9997, 1, -0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmt8x"]
 shading_mode = 2
 albedo_color = Color(0.786776, 0.62281, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lmt8x"]
+size = Vector3(10, 10, 10)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hlrh3"]
 
@@ -243,6 +246,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.508, 0, 15.3974)
 
 [node name="pirate_robot" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2" instance=ExtResource("16_lmt8x")]
 transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -51.1627, 0, -18.4168)
+
+[node name="RobotFightStart" type="Area3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode/Station2/RobotFightStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.6784, 0, -19.0152)
+shape = SubResource("BoxShape3D_lmt8x")
 
 [node name="InStationPC" type="CharacterBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InStationMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0241, 0.837641, 0)
