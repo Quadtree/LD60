@@ -20,11 +20,15 @@ public partial class ShipPC : CharacterBody3D
 
         if (Input.IsActionPressed("left")) RotateY((float)(SpinRate * delta));
         if (Input.IsActionPressed("right")) RotateY(-(float)(SpinRate * delta));
+        if (Input.IsActionPressed("forward")) RotateX(-(float)(SpinRate * delta));
+        if (Input.IsActionPressed("backward")) RotateX((float)(SpinRate * delta));
+        if (Input.IsActionPressed("spin_left")) RotateZ((float)(SpinRate * delta));
+        if (Input.IsActionPressed("spin_right")) RotateZ(-(float)(SpinRate * delta));
 
         Vector3 desiredVelocity = Vector3.Zero;
 
-        if (Input.IsActionPressed("forward")) desiredVelocity -= GlobalTransform.Basis.Column2 * MoveSpeed;
-        else if (Input.IsActionPressed("backward")) desiredVelocity += GlobalTransform.Basis.Column2 * MoveSpeed;
+        if (Input.IsActionPressed("accelerate")) desiredVelocity -= GlobalTransform.Basis.Column2 * MoveSpeed;
+        else if (Input.IsActionPressed("decelerate")) desiredVelocity += GlobalTransform.Basis.Column2 * MoveSpeed;
 
         var accel = Acceleration * (float)delta;
 
