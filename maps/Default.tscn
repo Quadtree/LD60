@@ -274,7 +274,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("19_t4pk5")
 
-[node name="Label" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/RobotFightUI"]
+[node name="KeyLabel" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/RobotFightUI"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 42.8826
