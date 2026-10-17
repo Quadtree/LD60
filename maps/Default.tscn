@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=39 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cbuokbvkd7fnt" path="res://actors/Station.tscn" id="9_yw211"]
 [ext_resource type="LabelSettings" uid="uid://dmt6pc0s8m0j6" path="res://ui/DefaultLabelSettings.tres" id="10_0tign"]
 [ext_resource type="Script" uid="uid://d02udybt8mtt0" path="res://actors/ShipPC.cs" id="10_knjwl"]
+[ext_resource type="Script" uid="uid://cw3oqxmuulhgm" path="res://maps/PirateStation.cs" id="10_ktqxq"]
 [ext_resource type="Material" uid="uid://dk22m6fao1iym" path="res://materials/BronzeStationShell.tres" id="12_gqor7"]
 [ext_resource type="Texture2D" uid="uid://5la054olky1t" path="res://textures/starfield1.png" id="12_j1mvy"]
 [ext_resource type="Script" uid="uid://c143ccvumkxbe" path="res://actors/SkySphere.cs" id="13_2dvic"]
@@ -197,6 +198,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6547, 0, -59.4882)
 
 [node name="PirateStation" type="StaticBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.3443, 0, -315.271)
+script = ExtResource("10_ktqxq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/PirateStation"]
 layers = 4
