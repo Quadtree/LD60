@@ -8,17 +8,45 @@ public partial class Default : Control
         base._Ready();
 
         ShipMode();
+
+
     }
 
-    void ShipMode()
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_station_2"))
+        {
+            Station2Mode();
+        }
+    }
+
+    public void ShipMode()
     {
         this.FindChildByName<Node3D>("InStationPC").FindChildByType<Camera3D>().Current = false;
         this.FindChildByName<Node3D>("ShipPC").FindChildByType<Camera3D>().Current = true;
     }
 
-    void StationMode()
+    public void StationMode()
     {
         this.FindChildByName<Node3D>("InStationPC").FindChildByType<Camera3D>().Current = true;
         this.FindChildByName<Node3D>("ShipPC").FindChildByType<Camera3D>().Current = false;
+    }
+
+    public void Station1Mode()
+    {
+
+    }
+
+    public void Station2Mode()
+    {
+        StationMode();
+
+        var pc = this.FindChildByType<InStationPC>();
+
+        var entryExit = this.FindChildByName<Node3D>("Station2EntryExitPoint");
+
+        pc.GlobalPosition = entryExit.GlobalPosition;
     }
 }
