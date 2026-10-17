@@ -71,6 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.896, 3, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0241, 0.837641, 0)
 script = ExtResource("3_hlrh3")
 SpinRate = 3.0
+MoveSpeed = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/SubViewport/InStationPC"]
 shape = SubResource("CapsuleShape3D_hlrh3")
