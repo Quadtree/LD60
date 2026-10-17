@@ -21,9 +21,10 @@ public partial class EnergyBolt : Node3D
 
         foreach (var it in GetTree().CurrentScene.FindChildrenByPredicate<Node3D>(it => (CanHitPlayer && it is ShipPC) || (CanHitEnemy && it is PirateFighter)))
         {
-            if (it.GlobalPosition.DistanceTo(GlobalPosition) < 1)
+            if (it.GlobalPosition.DistanceTo(GlobalPosition) < 2)
             {
                 QueueFree();
+                if (it is PirateFighter pf) pf.TakeDamage(1);
                 return;
             }
         }
