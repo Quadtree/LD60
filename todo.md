@@ -1,5 +1,6 @@
 - Lose screen
 - Exiting stations
+- Pirate fighters actually move
 - Generate actual manual in Libreoffice
 - Sound effects
 - Rise and fall in space mode
