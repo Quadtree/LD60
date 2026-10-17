@@ -21,6 +21,9 @@ uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, re
 uniform float specular : hint_range(0.0, 1.0, 0.01);
 uniform float metallic : hint_range(0.0, 1.0, 0.01);
 
+uniform sampler2D texture_front : source_color, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_back : source_color, filter_linear_mipmap, repeat_enable;
+
 uniform vec3 uv1_scale;
 uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
@@ -33,7 +36,7 @@ void vertex() {
 void fragment() {
 	vec2 base_uv = vec2(UV.y, UV.x);
 
-	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	vec4 albedo_tex = texture(texture_front, base_uv);
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
 
 	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
