@@ -16,8 +16,6 @@ public partial class InStationPC : CharacterBody3D
         if (Input.IsActionPressed("left")) RotateY((float)(SpinRate * delta));
         if (Input.IsActionPressed("right")) RotateY(-(float)(SpinRate * delta));
 
-
-
         if (Input.IsActionPressed("forward")) Velocity = -GlobalTransform.Basis.Column2 * MoveSpeed;
         else if (Input.IsActionPressed("backward")) Velocity = -GlobalTransform.Basis.Column2 * MoveSpeed;
         else Velocity = Vector3.Zero;
