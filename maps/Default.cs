@@ -95,6 +95,8 @@ public partial class Default : Control
         this.FindChildByName<Node3D>("InStationPC").FindChildByType<Camera3D>().Current = false;
         this.FindChildByName<Node3D>("ShipPC").FindChildByType<Camera3D>().Current = true;
 
+        this.FindChildByName<Label>("EncryptedCoordinates").Visible = false;
+
         LastShipMode = Time.GetTicksMsec();
 
         return true;

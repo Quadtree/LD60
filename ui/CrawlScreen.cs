@@ -34,6 +34,8 @@ public partial class CrawlScreen : Control
 
         ns.FindChildByType<Label>().Text = text;
         ns.Next = next;
+
+        ctx.GetTree().CurrentScene.FindChildByName<SubViewport>("InGameViewport").RenderTargetUpdateMode = SubViewport.UpdateMode.Once;
     }
 
     public override void _Input(InputEvent @event)
