@@ -1,4 +1,3 @@
-- Sound effects
 - Rise and fall in space mode
 - Stuff swooshing past to indicate motion
 - 30 FPS?
@@ -25,3 +24,4 @@
 - Pirates can't shoot your ship while you're in the station
 - Pirate fighters actually move
 - Generate actual manual in Libreoffice
+- Sound effects
