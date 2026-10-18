@@ -143,6 +143,7 @@ script = ExtResource("1_q1grt")
 [node name="InGameViewport" type="SubViewport" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer"]
 process_mode = 1
 handle_input_locally = false
+audio_listener_enable_3d = true
 size = Vector2i(562, 450)
 size_2d_override = Vector2i(200, 160)
 size_2d_override_stretch = true
@@ -209,9 +210,6 @@ shape = SubResource("SphereShape3D_bd0q3")
 [node name="Camera3D" type="Camera3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/ShipPC"]
 cull_mask = 1047556
 far = 100.0
-
-[node name="AudioListener3D" type="AudioListener3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/ShipPC"]
-current = true
 
 [node name="Station" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_yw211")]
 transform = Transform3D(18.4835, 0, 7.63948, 0, 20, 0, -7.63948, 0, 18.4835, 21.9826, 0, 21.7852)

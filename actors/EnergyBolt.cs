@@ -15,13 +15,15 @@ public partial class EnergyBolt : Node3D
     [Export]
     float TimeToLive = 3;
 
+    bool PlayedAudio = false;
+
     public override void _Ready()
     {
         base._Ready();
 
         this.FindChildByType<Area3D>().BodyEntered += HitSomething;
 
-        Util.SpawnOneShotSound("res://sounds/fire_space_bolt.wav", this, GlobalPosition);
+
     }
 
     void HitSomething(Node3D thing)
@@ -52,6 +54,12 @@ public partial class EnergyBolt : Node3D
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
+
+        if (!PlayedAudio)
+        {
+            Util.SpawnOneShotSound("res://sounds/fire_space_bolt.wav", this, GlobalPosition);
+            PlayedAudio = true;
+        }
 
         // foreach (var it in GetTree().CurrentScene.FindChildrenByPredicate<Node3D>(it => (CanHitPlayer && it is ShipPC) || (CanHitEnemy && it is PirateFighter)))
         // {
