@@ -104,4 +104,6 @@ public partial class Default : Control
 
         pc.GlobalPosition = entryExit.GlobalPosition;
     }
+
+    public bool IsInStationMode => this.FindChildByType<InStationPC>().FindChildByType<Camera3D>().Current;
 }

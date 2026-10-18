@@ -26,6 +26,8 @@ public partial class EnergyBolt : Node3D
     {
         GD.Print($"We've hit {thing}");
 
+        if (this.FindParentByType<Default>().IsInStationMode) return;
+
         if (CanHitEnemy && thing is PirateFighter pf) pf.TakeDamage(1);
         if (CanHitEnemy && thing is PirateStation ps) ps.TakeDamage(1);
         if (CanHitPlayer && thing is ShipPC sp) sp.TakeDamage(1);
