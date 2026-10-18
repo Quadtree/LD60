@@ -11,9 +11,9 @@ public partial class Asteroid : AnimatableBody3D
 
         RotationAxis = new Vector3(Util.RandF(-1, 1), Util.RandF(-1, 1), Util.RandF(-1, 1)).Normalized();
 
-        GlobalRotation = new Vector3(Util.RandF(-1000, 1000), Util.RandF(-1000, 1000), Util.RandF(-1000, 1000));
+        //GlobalRotation = new Vector3(Util.RandF(-1000, 1000), Util.RandF(-1000, 1000), Util.RandF(-1000, 1000));
 
-        GlobalPosition += new Vector3(0, Util.RandF(-10, 10), 0);
+        GlobalPosition += new Vector3(0, Util.RandF(-30, 30), 0);
     }
 
     public override void _PhysicsProcess(double delta)
