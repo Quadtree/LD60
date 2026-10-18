@@ -16,7 +16,7 @@ public partial class PirateFighter : AnimatableBody3D
         {
             var targetVector = (pc.GlobalPosition - GlobalPosition).Normalized();
 
-            var currentVector = -GlobalTransform.Basis.Column2;
+            var currentVector = (-GlobalTransform.Basis.Column2).Normalized();
 
             var distToTargetVector = targetVector.DistanceTo(currentVector);
 
@@ -24,7 +24,7 @@ public partial class PirateFighter : AnimatableBody3D
 
             var nv = currentVector.Slerp(targetVector, (float)(20 * delta));
 
-            //GD.Print($"targetVector={targetVector} nv={nv}");
+            GD.Print($"targetVector={targetVector} nv={nv}");
 
             //LookAt(GlobalPosition + nv);
 
