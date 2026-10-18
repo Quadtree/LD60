@@ -80,6 +80,8 @@ public partial class Default : Control
 
             man.Visible = !man.Visible;
             GD.Print($"Changed manual visibility to {man.Visible}");
+
+            this.FindChildByType<Manual>().PlayRandomPaperSound();
         }
     }
 

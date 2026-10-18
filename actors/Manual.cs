@@ -78,6 +78,8 @@ public partial class Manual : Node3D
         this.FindChildByName<Node>("Page3").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightSide";
         this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat(ManPageResource(currentPageNumber + 4), ManPageResource(currentPageNumber + 3), false, false);
         this.FindChildByName<Node3D>("Page3").Visible = true;
+
+        PlayRandomPaperSound();
     }
 
     void RetreatPages()
@@ -93,6 +95,13 @@ public partial class Manual : Node3D
         this.FindChildByName<Node>("Page3").FindChildByType<AnimationPlayer>().CurrentAnimation = "LeftSide";
         this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat(ManPageResource(currentPageNumber - 2), ManPageResource(currentPageNumber - 1), true, false);
         this.FindChildByName<Node3D>("Page3").Visible = true;
+
+        PlayRandomPaperSound();
+    }
+
+    public void PlayRandomPaperSound()
+    {
+        Util.SpawnOneShotSound($"res://sounds/paper{Util.RandInt(0, 5)}.wav", this);
     }
 
     public override void _Process(double delta)
