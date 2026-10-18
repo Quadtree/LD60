@@ -16,7 +16,7 @@ public partial class PirateFighter : AnimatableBody3D
 
         if (this.FindParentByType<SubViewport>().FindChildByType<ShipPC>() is ShipPC pc)
         {
-            if ((pc.GlobalPosition - GlobalPosition).Length() < 50)
+            if ((pc.GlobalPosition - GlobalPosition).Length() < 80)
             {
 
                 var targetVector = (pc.GlobalPosition - GlobalPosition).Normalized();
