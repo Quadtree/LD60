@@ -50,6 +50,22 @@ public partial class Default : Control
         }
     }
 
+    ulong LastFrameRenderTime;
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+        if (ThirtyFPSMode)
+        {
+            if (Time.GetTicksMsec() - LastFrameRenderTime > 33)
+            {
+                this.FindChildByName<SubViewport>("InGameViewport").RenderTargetUpdateMode = SubViewport.UpdateMode.Once;
+                LastFrameRenderTime = Time.GetTicksMsec();
+            }
+        }
+    }
+
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
