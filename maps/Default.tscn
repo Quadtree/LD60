@@ -255,6 +255,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24.68
 layers = 4
 mesh = SubResource("QuadMesh_ktqxq")
 
+[node name="PirateFighter2" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("14_lr4ce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.264, 0, -305.667)
+
+[node name="PirateFighter3" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("14_lr4ce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.215, 0, -325.551)
+
 [node name="ShipLocationLabel" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
 texture_filter = 1
 offset_right = 40.0
