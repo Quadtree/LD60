@@ -13,6 +13,8 @@ public partial class Manual : Node3D
     AnimationPlayer TrackedAnimationPlayer;
     int CurrentMovement;
 
+    const int LAST_PAGE = 8;
+
     public override void _Ready()
     {
         base._Ready();
@@ -65,7 +67,7 @@ public partial class Manual : Node3D
 
     void AdvancePages()
     {
-        if (currentPageNumber >= 3) return;
+        if (currentPageNumber >= (LAST_PAGE - 1)) return;
 
         this.FindChildByName<Node>("Page2").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightToLeft";
         Riser = this.FindChildByName<Node3D>("Page2");
