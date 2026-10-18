@@ -76,13 +76,47 @@ public partial class Default : Control
 
         if (@event.IsActionPressed("toggle_manual_visibility"))
         {
+            ToggleManualVis();
+        }
+
+        if (@event.IsActionPressed("mouse_click"))
+        {
             var man = this.FindChildByType<ManualViewport>();
 
-            man.Visible = !man.Visible;
-            GD.Print($"Changed manual visibility to {man.Visible}");
+            if (!man.Visible)
+            {
+                ToggleManualVis();
+            }
+            else
+            {
+                if (@event is InputEventMouseButton btn)
+                {
+                    var man2 = this.FindChildByType<Manual>();
 
-            this.FindChildByType<Manual>().PlayRandomPaperSound();
+                    var pos = btn.Position / GetViewport().GetVisibleRect().End;
+                    GD.Print($"pos={pos}");
+
+                    if (pos.X >= .3 && pos.X <= .6)
+                    {
+                        man2.RetreatPages();
+                    }
+                    else if (pos.X >= .6 && pos.X <= 1)
+                    {
+                        man2.AdvancePages();
+                    }
+                }
+            }
         }
+    }
+
+    void ToggleManualVis()
+    {
+        var man = this.FindChildByType<ManualViewport>();
+
+        man.Visible = !man.Visible;
+        GD.Print($"Changed manual visibility to {man.Visible}");
+
+        this.FindChildByType<Manual>().PlayRandomPaperSound();
     }
 
     public bool ShipMode()

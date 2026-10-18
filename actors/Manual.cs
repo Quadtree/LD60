@@ -65,7 +65,7 @@ public partial class Manual : Node3D
         return $"res://manual/pages/page-{idx}.png";
     }
 
-    void AdvancePages()
+    public void AdvancePages()
     {
         if (currentPageNumber >= (LAST_PAGE - 1)) return;
 
@@ -82,7 +82,7 @@ public partial class Manual : Node3D
         PlayRandomPaperSound();
     }
 
-    void RetreatPages()
+    public void RetreatPages()
     {
         if (currentPageNumber <= 1) return;
 
@@ -101,7 +101,7 @@ public partial class Manual : Node3D
 
     public void PlayRandomPaperSound()
     {
-        Util.SpawnOneShotSound($"res://sounds/paper{Util.RandInt(0, 5)}.wav", this);
+        Util.SpawnOneShotSound($"res://sounds/paper{Util.RandInt(1, 5)}.wav", this);
     }
 
     public override void _Process(double delta)
