@@ -456,11 +456,11 @@ transform = Transform3D(1, 0, 0, 0, -0.264462, 0.964396, 0, -0.964396, -0.264462
 layers = 2
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/BookViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.33695, -0.213609, 2.10247)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41053, -0.213609, 2.39204)
 cull_mask = 1047554
 
 [node name="Manual" type="Node3D" parent="SubViewportContainer/BookViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.443431, -0.896308, 0, 0.896308, 0.443431, 9.86834, -0.834291, 0)
+transform = Transform3D(1, 0, 0, 0, 0.443431, -0.896308, 0, 0.896308, 0.443431, 9.76336, -0.172836, 1.11855)
 script = ExtResource("8_dfir2")
 
 [node name="LeftCover" type="MeshInstance3D" parent="SubViewportContainer/BookViewport/Manual"]
