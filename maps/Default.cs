@@ -7,7 +7,7 @@ public partial class Default : Control
     {
         base._Ready();
 
-        ShipMode();
+        StationMode();
 
         this.FindChildByName<Area3D>("ExitStation2").BodyEntered += (body) =>
         {
