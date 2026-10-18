@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=45 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -51,6 +51,30 @@ size = Vector3(10, 10, 10)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t4pk5"]
 data = PackedVector3Array(-5, 5, 5, 5, 5, 5, -5, -5, 5, 5, 5, 5, 5, -5, 5, -5, -5, 5, 5, 5, -5, -5, 5, -5, 5, -5, -5, -5, 5, -5, -5, -5, -5, 5, -5, -5, 5, 5, 5, 5, 5, -5, 5, -5, 5, 5, 5, -5, 5, -5, -5, 5, -5, 5, -5, 5, -5, -5, 5, 5, -5, -5, -5, -5, 5, 5, -5, -5, 5, -5, -5, -5, 5, 5, 5, -5, 5, 5, 5, 5, -5, -5, 5, 5, -5, 5, -5, 5, 5, -5, -5, -5, 5, 5, -5, 5, -5, -5, -5, 5, -5, 5, 5, -5, -5, -5, -5, -5)
+
+[sub_resource type="Gradient" id="Gradient_ktqxq"]
+offsets = PackedFloat32Array(0, 0.677249, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0.137255)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ktqxq"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j08x7"]
+width = 1024
+height = 1024
+color_ramp = SubResource("Gradient_ktqxq")
+noise = SubResource("FastNoiseLite_ktqxq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7t7x6"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("NoiseTexture2D_j08x7")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ktqxq"]
+material = SubResource("StandardMaterial3D_7t7x6")
+size = Vector2(4000, 4000)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_an2ui"]
 
@@ -215,6 +239,16 @@ shape = SubResource("ConcavePolygonShape3D_t4pk5")
 
 [node name="CheatPirateStationLoc" type="Node3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.633, 0, -280.676)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -15, 0)
+layers = 4
+mesh = SubResource("QuadMesh_ktqxq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24.68, 15, -60.42)
+layers = 4
+mesh = SubResource("QuadMesh_ktqxq")
 
 [node name="ShipLocationLabel" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
 texture_filter = 1
