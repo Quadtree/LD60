@@ -1,5 +1,3 @@
-- Pirates can't shoot your ship while you're in the station
-- Pirate fighters actually move
 - Generate actual manual in Libreoffice
 - Sound effects
 - Rise and fall in space mode
@@ -25,3 +23,5 @@
 - Win screen
 - Lose screen
 - Exiting stations
+- Pirates can't shoot your ship while you're in the station
+- Pirate fighters actually move
