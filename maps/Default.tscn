@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=47 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://brbd65qvjgym0" path="res://maps/RobotFightStart.cs" id="17_0tign"]
 [ext_resource type="Script" uid="uid://b8j2ujvu3bvaw" path="res://maps/ShipLocationLabel.cs" id="17_lmt8x"]
 [ext_resource type="Script" uid="uid://do0yul0s4egy3" path="res://ui/RobotFightUi.cs" id="19_t4pk5"]
+[ext_resource type="Script" uid="uid://c4lcggyi14ol0" path="res://ui/MetaManual.cs" id="24_j08x7"]
 
 [sub_resource type="Environment" id="Environment_q1grt"]
 background_mode = 1
@@ -101,6 +102,9 @@ size = Vector3(10, 10, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6m16o"]
 size = Vector3(1, 0.03, 1.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktqxq"]
+font_size = 24
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -454,6 +458,15 @@ transform = Transform3D(-3.27835e-08, 0, -0.5, 0, 0.75, 0, 0.75, 0, -2.18557e-08
 
 [node name="Page3" parent="SubViewportContainer/BookViewport/Manual" instance=ExtResource("8_rxjgb")]
 transform = Transform3D(-3.27835e-08, 0, -0.5, 0, 0.75, 0, 0.75, 0, -2.18557e-08, 0, 0.0806551, 0)
+
+[node name="MetaManual" type="Label" parent="SubViewportContainer/BookViewport"]
+offset_left = 1796.0
+offset_top = 1761.0
+offset_right = 2294.0
+offset_bottom = 1798.0
+text = "Meta Manual!"
+label_settings = SubResource("LabelSettings_ktqxq")
+script = ExtResource("24_j08x7")
 
 [editable path="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/Station2"]
 [editable path="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/Station2/station1"]
