@@ -3,6 +3,8 @@ using Godot;
 
 public partial class Default : Control
 {
+    ulong LastShipMode;
+
     public override void _Ready()
     {
         base._Ready();
@@ -16,7 +18,7 @@ public partial class Default : Control
                 ShipMode();
 
                 var shp = this.FindChildByType<ShipPC>();
-                shp.GlobalTransform = this.FindChildByName<Node3D>("Station2").FindChildByName<Node3D>("ExitPoint").GlobalTransform;
+                shp.GlobalPosition = this.FindChildByName<Node3D>("Station2").FindChildByName<Node3D>("ExitPoint").GlobalPosition;
             }
         };
 
@@ -27,7 +29,7 @@ public partial class Default : Control
                 ShipMode();
 
                 var shp = this.FindChildByType<ShipPC>();
-                shp.GlobalTransform = this.FindChildByName<Node3D>("Station").FindChildByName<Node3D>("ExitPoint").GlobalTransform;
+                shp.GlobalPosition = this.FindChildByName<Node3D>("Station").FindChildByName<Node3D>("ExitPoint").GlobalPosition;
             }
         };
 
@@ -59,12 +61,22 @@ public partial class Default : Control
 
     public void ShipMode()
     {
+        GD.Print("Ship mode!");
         this.FindChildByName<Node3D>("InStationPC").FindChildByType<Camera3D>().Current = false;
         this.FindChildByName<Node3D>("ShipPC").FindChildByType<Camera3D>().Current = true;
+
+        LastShipMode = Time.GetTicksMsec();
     }
 
     public void StationMode()
     {
+        if ((Time.GetTicksMsec() - LastShipMode) < 500)
+        {
+            GD.Print("Too soon!");
+            return;
+        }
+
+        GD.Print("Station mode!");
         this.FindChildByName<Node3D>("InStationPC").FindChildByType<Camera3D>().Current = true;
         this.FindChildByName<Node3D>("ShipPC").FindChildByType<Camera3D>().Current = false;
     }
