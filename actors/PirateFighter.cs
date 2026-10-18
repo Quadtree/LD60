@@ -20,7 +20,18 @@ public partial class PirateFighter : AnimatableBody3D
 
             var rotation = currentVector.SignedAngleTo(targetVector, Vector3.Up);
 
-            GD.Print($"rotation={rotation}");
+            GD.Print($"rotation={rotation} {rotation / Mathf.Abs(rotation)}");
+
+            float rotRate = 1 * (float)delta;
+
+            if (Mathf.Abs(rotation) < rotRate)
+            {
+                LookAt(pc.GlobalPosition);
+            }
+            else
+            {
+                RotateY(rotation / Mathf.Abs(rotation) * rotRate);
+            }
 
 
             // var distToTargetVector = targetVector.DistanceTo(currentVector);
@@ -40,7 +51,7 @@ public partial class PirateFighter : AnimatableBody3D
             //     GlobalPosition += -GlobalTransform.Basis.Column2 * (float)delta * 4;
             // }
 
-            if (FireCharge >= 0.35f)// && distToTargetVector < 0.2f)
+            if (FireCharge >= 0.35f && rotation < 0.2f)
             {
                 foreach (var sp in new float[] { 0 })
                 {
