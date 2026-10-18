@@ -452,7 +452,7 @@ layers = 2
 mesh = SubResource("TorusMesh_q1grt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/BookViewport"]
-transform = Transform3D(1, 0, 0, 0, -0.264462, 0.964396, 0, -0.964396, -0.264462, 8.02573, 0, 0)
+transform = Transform3D(-0.151658, -0.456931, -0.876478, 0.978782, 0.0541899, -0.197611, 0.137791, -0.88785, 0.439017, 8.02573, 0, 0)
 layers = 2
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/BookViewport"]
