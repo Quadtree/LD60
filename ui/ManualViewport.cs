@@ -7,9 +7,6 @@ public partial class ManualViewport : SubViewportContainer
     {
         base._Input(@event);
 
-        if (@event.IsActionPressed("toggle_manual_visibility"))
-        {
-            Visible = !Visible;
-        }
+        
     }
 }

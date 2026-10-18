@@ -47,6 +47,14 @@ public partial class Default : Control
         if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_station_1")) Station1Mode();
         if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_station_2")) Station2CheatMode();
         if (OS.IsDebugBuild() && @event.IsActionPressed("cheat_go_final")) CheatToPirateStation();
+
+        if (@event.IsActionPressed("toggle_manual_visibility"))
+        {
+            var man = this.FindChildByType<Manual>();
+
+            man.Visible = !man.Visible;
+            GD.Print($"Changed manual visibility to {man.Visible}");
+        }
     }
 
     public void ShipMode()
