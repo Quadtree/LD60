@@ -210,6 +210,9 @@ shape = SubResource("SphereShape3D_bd0q3")
 cull_mask = 1047556
 far = 100.0
 
+[node name="AudioListener3D" type="AudioListener3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode/ShipPC"]
+current = true
+
 [node name="Station" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("9_yw211")]
 transform = Transform3D(18.4835, 0, 7.63948, 0, 20, 0, -7.63948, 0, 18.4835, 21.9826, 0, 21.7852)
 
