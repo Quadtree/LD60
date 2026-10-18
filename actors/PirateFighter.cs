@@ -18,24 +18,29 @@ public partial class PirateFighter : AnimatableBody3D
 
             var currentVector = (-GlobalTransform.Basis.Column2).Normalized();
 
-            var distToTargetVector = targetVector.DistanceTo(currentVector);
+            var rotation = currentVector.SignedAngleTo(targetVector, Vector3.Up);
 
-            //GD.Print($"distToTargetVector={distToTargetVector}");
+            GD.Print($"rotation={rotation}");
 
-            var nv = currentVector.Slerp(targetVector, (float)(20 * delta));
 
-            GD.Print($"targetVector={targetVector} nv={nv}");
+            // var distToTargetVector = targetVector.DistanceTo(currentVector);
 
-            //LookAt(GlobalPosition + nv);
+            // //GD.Print($"distToTargetVector={distToTargetVector}");
 
-            GlobalTransform = GlobalTransform.LookingAt(GlobalPosition + nv);
+            // var nv = currentVector.Slerp(targetVector, (float)(20 * delta));
 
-            if (distToTargetVector < 0.5f)
-            {
-                GlobalPosition += -GlobalTransform.Basis.Column2 * (float)delta * 4;
-            }
+            // GD.Print($"targetVector={targetVector} nv={nv}");
 
-            if (FireCharge >= 0.35f && distToTargetVector < 0.2f)
+            // //LookAt(GlobalPosition + nv);
+
+            // GlobalTransform = GlobalTransform.LookingAt(GlobalPosition + nv);
+
+            // if (distToTargetVector < 0.5f)
+            // {
+            //     GlobalPosition += -GlobalTransform.Basis.Column2 * (float)delta * 4;
+            // }
+
+            if (FireCharge >= 0.35f)// && distToTargetVector < 0.2f)
             {
                 foreach (var sp in new float[] { 0 })
                 {
