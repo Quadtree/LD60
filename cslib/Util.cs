@@ -757,14 +757,14 @@ public static class Util
 
     public static void SpawnOneShotSound(string resName, Node contextNode, Vector3 location, float volume = 15f, float pitchMod = 1f)
     {
-        var t = AT.TimeLimit();
+        //var t = AT.TimeLimit();
 
-        ResourceLoadMonitor.StartLoading<AudioStream>(resName, contextNode, (audioStream) =>
-        {
-            Util.SpawnOneShotSound(audioStream, contextNode, location, volume, pitchMod);
-        }, _ => { });
+        //ResourceLoadMonitor.StartLoading<AudioStream>(resName, contextNode, (audioStream) =>
+        //{
+        Util.SpawnOneShotSound(GD.Load<AudioStream>(resName), contextNode, location, volume, pitchMod);
+        //}, _ => { });
 
-        t.Limit(0.001f);
+        //t.Limit(0.001f);
     }
 
     public static void SpawnOneShotSound(AudioStream sample, Node contextNode, Vector3 location, float volume = 15f, float pitchMod = 1f)
@@ -813,10 +813,10 @@ public static class Util
 
     public static void SpawnOneShotSound(string resName, Node contextNode, Vector2 location, float volume = 15f, float pitchMod = 1f, float falloffRate = 0.5f)
     {
-        ResourceLoadMonitor.StartLoading<AudioStream>(resName, contextNode, (audioStream) =>
-        {
-            Util.SpawnOneShotSound(audioStream, contextNode, location, volume, pitchMod, falloffRate);
-        }, _ => { });
+        //ResourceLoadMonitor.StartLoading<AudioStream>(resName, contextNode, (audioStream) =>
+        //{
+        Util.SpawnOneShotSound(GD.Load<AudioStream>(resName), contextNode, location, volume, pitchMod, falloffRate);
+        //}, _ => { });
     }
 
     public static void SpawnOneShotSound(AudioStream sample, Node contextNode, Vector2 location, float volume = 15f, float pitchMod = 1f, float falloffRate = 0.5f)
