@@ -38,8 +38,8 @@ public partial class ShipPC : CharacterBody3D
 
         FireCharge += (float)delta;
 
-        if (Input.IsActionPressed("spin_left")) Rotate(GlobalTransform.Basis.Column1, (float)(SpinRate * delta));
-        if (Input.IsActionPressed("spin_right")) Rotate(GlobalTransform.Basis.Column1, -(float)(SpinRate * delta));
+        if (Input.IsActionPressed("left")) Rotate(GlobalTransform.Basis.Column1, (float)(SpinRate * delta));
+        if (Input.IsActionPressed("right")) Rotate(GlobalTransform.Basis.Column1, -(float)(SpinRate * delta));
         //if (Input.IsActionPressed("forward")) Rotate(GlobalTransform.Basis.Column0, -(float)(SpinRate * delta));
         //if (Input.IsActionPressed("backward")) Rotate(GlobalTransform.Basis.Column0, (float)(SpinRate * delta));
         //if (Input.IsActionPressed("spin_left")) Rotate(GlobalTransform.Basis.Column2, (float)(SpinRate * delta));
@@ -47,11 +47,16 @@ public partial class ShipPC : CharacterBody3D
 
         Vector3 desiredVelocity = Vector3.Zero;
 
-        if (Input.IsActionPressed("left")) desiredVelocity -= GlobalTransform.Basis.Column0 * MoveSpeed;
-        if (Input.IsActionPressed("right")) desiredVelocity += GlobalTransform.Basis.Column0 * MoveSpeed;
+        if (Input.IsActionPressed("spin_left")) desiredVelocity -= GlobalTransform.Basis.Column0 * MoveSpeed;
+        if (Input.IsActionPressed("spin_right")) desiredVelocity += GlobalTransform.Basis.Column0 * MoveSpeed;
 
         if (Input.IsActionPressed("forward")) desiredVelocity -= GlobalTransform.Basis.Column2 * MoveSpeed;
         if (Input.IsActionPressed("backward")) desiredVelocity += GlobalTransform.Basis.Column2 * MoveSpeed;
+
+        if (Input.IsActionPressed("up")) desiredVelocity += GlobalTransform.Basis.Column1 * MoveSpeed;
+        if (Input.IsActionPressed("down")) desiredVelocity -= GlobalTransform.Basis.Column1 * MoveSpeed;
+
+        Position = new Vector3(Position.X, Util.Clamp(Position.Y, -10, 10), Position.Z);
 
         var accel = Acceleration * (float)delta;
 
