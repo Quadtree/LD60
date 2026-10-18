@@ -4,7 +4,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./pages:/pages
-      - ./manual.odt:/in/manual.odt
+      - ./manual.pdf:/in/manual.pdf
     network_mode: none
     entrypoint: ["/bin/bash", "-c"]
-    command: ["rm /pages/* || true && pandoc -o /pages/manual.pdf /in/manual.odt && pdftocairo -png /pages/manual.pdf /pages/page"]
+    command: ["rm /pages/* ; pdftocairo -png /in/manual.pdf /pages/page"]
