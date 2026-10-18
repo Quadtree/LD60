@@ -1,5 +1,3 @@
-- Rise and fall in space mode
-- Stuff swooshing past to indicate motion
 - 30 FPS?
 - Startup screen
 - Bad ending
@@ -25,3 +23,5 @@
 - Pirate fighters actually move
 - Generate actual manual in Libreoffice
 - Sound effects
+- Rise and fall in space mode
+- Stuff swooshing past to indicate motion
