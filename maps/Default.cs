@@ -5,6 +5,9 @@ public partial class Default : Control
 {
     ulong LastShipMode;
 
+    [Export]
+    bool ThirtyFPSMode = true;
+
     public override void _Ready()
     {
         base._Ready();
@@ -39,6 +42,11 @@ public partial class Default : Control
         })
         {
 
+        }
+
+        if (ThirtyFPSMode)
+        {
+            this.FindChildByName<SubViewport>("InGameViewport").RenderTargetUpdateMode = SubViewport.UpdateMode.Once;
         }
     }
 
