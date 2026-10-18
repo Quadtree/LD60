@@ -7,4 +7,4 @@ services:
       - ./manual.odt:/in/manual.odt
     network_mode: none
     entrypoint: ["/bin/bash", "-c"]
-    command: ["rm /pages/* && pandoc -o /in/manual.odt /pages/manual.pdf && pdftocairo -png /pages/manual.pdf /pages/page"]
+    command: ["rm /pages/* || true && pandoc -o /pages/manual.pdf /in/manual.odt && pdftocairo -png /pages/manual.pdf /pages/page"]
