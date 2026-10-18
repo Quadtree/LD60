@@ -1,3 +1,8 @@
 services:
   app:
-    image: 
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./pages:/pages
+      - ./manual.pdf:/in/manual.pdf
+    network_mode: none
