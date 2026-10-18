@@ -54,8 +54,13 @@ public partial class Manual : Node3D
         this.FindChildByName<Node>("Page2").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightSide";
         this.FindChildByName<Node3D>("Page3").Visible = false;
 
-        this.FindChildByName<Node>("Page1").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber}.png", $"res://textures/manpages/page{currentPageNumber - 1}.png", true, false);
-        this.FindChildByName<Node>("Page2").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber + 2}.png", $"res://textures/manpages/page{currentPageNumber + 1}.png", true, false);
+        this.FindChildByName<Node>("Page1").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat(ManPageResource(currentPageNumber), ManPageResource(currentPageNumber - 1), true, false);
+        this.FindChildByName<Node>("Page2").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat(ManPageResource(currentPageNumber + 2), ManPageResource(currentPageNumber + 1), true, false);
+    }
+
+    string ManPageResource(int idx)
+    {
+        return $"res://manual/pages/page-{idx}.png";
     }
 
     void AdvancePages()
@@ -69,7 +74,7 @@ public partial class Manual : Node3D
         CurrentMovement = 1;
 
         this.FindChildByName<Node>("Page3").FindChildByType<AnimationPlayer>().CurrentAnimation = "RightSide";
-        this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber + 4}.png", $"res://textures/manpages/page{currentPageNumber + 3}.png", false, false);
+        this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat(ManPageResource(currentPageNumber + 4), ManPageResource(currentPageNumber + 3), false, false);
         this.FindChildByName<Node3D>("Page3").Visible = true;
     }
 
@@ -84,7 +89,7 @@ public partial class Manual : Node3D
         CurrentMovement = -1;
 
         this.FindChildByName<Node>("Page3").FindChildByType<AnimationPlayer>().CurrentAnimation = "LeftSide";
-        this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat($"res://textures/manpages/page{currentPageNumber - 2}.png", $"res://textures/manpages/page{currentPageNumber - 1}.png", true, false);
+        this.FindChildByName<Node>("Page3").FindChildByType<MeshInstance3D>().MaterialOverride = CreatePageMat(ManPageResource(currentPageNumber - 2), ManPageResource(currentPageNumber - 1), true, false);
         this.FindChildByName<Node3D>("Page3").Visible = true;
     }
 
