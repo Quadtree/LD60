@@ -20,6 +20,8 @@ public partial class EnergyBolt : Node3D
         base._Ready();
 
         this.FindChildByType<Area3D>().BodyEntered += HitSomething;
+
+        Util.SpawnOneShotSound("res://sounds/fire_space_bolt.wav", this, GlobalPosition);
     }
 
     void HitSomething(Node3D thing)
@@ -31,6 +33,10 @@ public partial class EnergyBolt : Node3D
         if (CanHitEnemy && thing is PirateFighter pf) pf.TakeDamage(1);
         if (CanHitEnemy && thing is PirateStation ps) ps.TakeDamage(1);
         if (CanHitPlayer && thing is ShipPC sp) sp.TakeDamage(1);
+
+        QueueFree();
+
+        Util.SpawnOneShotSound("res://sounds/hit_space.wav", this, GlobalPosition);
     }
 
     public override void _PhysicsProcess(double delta)

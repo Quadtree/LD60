@@ -77,6 +77,7 @@ public partial class RobotFightUi : Control
         {
             Dishonor = true;
             RobotHealth -= 6;
+            Util.SpawnOneShotSound("res://sounds/laser.wav", this);
         }
         else if (YourMove == Moves.Uppercut && OpponentMove == Moves.Jab)
         {
@@ -107,8 +108,16 @@ public partial class RobotFightUi : Control
             TheOutcome = Outcome.Nobody_wins;
         }
 
-        if (TheOutcome == Outcome.You_win) RobotHealth--;
-        else if (TheOutcome == Outcome.Robot_wins) YourHealth--;
+        if (TheOutcome == Outcome.You_win)
+        {
+            RobotHealth--;
+            Util.SpawnOneShotSound("res://sounds/fight_damage_enemy.wav", this);
+        }
+        else if (TheOutcome == Outcome.Robot_wins)
+        {
+            YourHealth--;
+            Util.SpawnOneShotSound("res://sounds/fight_hit.wav", this);
+        }
 
         UpdateBoxes();
     }
