@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=50 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -23,6 +23,8 @@
 [ext_resource type="Script" uid="uid://brbd65qvjgym0" path="res://maps/RobotFightStart.cs" id="17_0tign"]
 [ext_resource type="Script" uid="uid://b8j2ujvu3bvaw" path="res://maps/ShipLocationLabel.cs" id="17_lmt8x"]
 [ext_resource type="Script" uid="uid://do0yul0s4egy3" path="res://ui/RobotFightUi.cs" id="19_t4pk5"]
+[ext_resource type="Texture2D" uid="uid://y7o3m7v2psh2" path="res://textures/solid.png" id="21_7t7x6"]
+[ext_resource type="Script" uid="uid://bef0tkgpmnuky" path="res://ui/ShipHealthBar.cs" id="22_bu02h"]
 [ext_resource type="Script" uid="uid://c4lcggyi14ol0" path="res://ui/MetaManual.cs" id="24_j08x7"]
 
 [sub_resource type="Environment" id="Environment_q1grt"]
@@ -97,6 +99,8 @@ albedo_color = Color(0.786776, 0.62281, 0, 1)
 size = Vector3(10, 10, 10)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hlrh3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bu02h"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_q1grt"]
 
@@ -412,6 +416,18 @@ text = "You get encrypted
 coordinates!
 "
 label_settings = ExtResource("10_0tign")
+
+[node name="ShipHealthBar" type="TextureRect" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_bu02h")
+offset_left = 113.0
+offset_top = 3.0
+offset_right = 198.0
+offset_bottom = 13.0
+pivot_offset = Vector2(85, 0)
+texture = ExtResource("21_7t7x6")
+expand_mode = 1
+script = ExtResource("22_bu02h")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1

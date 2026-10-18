@@ -13,7 +13,7 @@ public partial class ShipPC : CharacterBody3D
     float Acceleration = 1;
 
     [Export]
-    float Health = 15;
+    public float Health = 15;
 
     float FireCharge;
 

@@ -58,14 +58,14 @@ public partial class PirateFighter : AnimatableBody3D
                     Position += -Transform.Basis.Column2 * (float)delta * 4;
                 }
 
-                if (FireCharge >= 0.35f && Mathf.Abs(rotation) < 0.2f)
+                if (FireCharge >= 1.2f && Mathf.Abs(rotation) < 0.2f)
                 {
                     foreach (var sp in new float[] { 0 })
                     {
                         var bolt = GD.Load<PackedScene>("res://actors/EnergyBoltEnemy.tscn").Instantiate<Node3D>();
                         this.FindParentByType<SubViewport>().AddChild(bolt);
                         bolt.GlobalPosition = GlobalPosition + GlobalTransform.Basis.Column0 * sp;
-                        bolt.GlobalRotation = GlobalRotation;
+                        bolt.LookAt(pc.GlobalPosition);
                     }
 
                     FireCharge = 0;
