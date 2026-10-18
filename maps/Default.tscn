@@ -191,7 +191,7 @@ skeleton = NodePath("../..")
 script = ExtResource("13_2dvic")
 
 [node name="PirateFighter" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode" instance=ExtResource("14_lr4ce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6547, 0, -59.4882)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.642, 0, -67.4719)
 
 [node name="PirateStation" type="StaticBody3D" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/InSpaceMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.3443, 0, -315.271)
