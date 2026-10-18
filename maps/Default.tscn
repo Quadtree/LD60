@@ -123,6 +123,7 @@ size_flags_vertical = 3
 script = ExtResource("1_adt7c")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 111.0
 offset_bottom = 23.0
