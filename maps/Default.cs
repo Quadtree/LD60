@@ -50,7 +50,7 @@ public partial class Default : Control
 
         if (@event.IsActionPressed("toggle_manual_visibility"))
         {
-            var man = this.FindChildByType<Manual>();
+            var man = this.FindChildByType<ManualViewport>();
 
             man.Visible = !man.Visible;
             GD.Print($"Changed manual visibility to {man.Visible}");
