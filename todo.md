@@ -1,5 +1,4 @@
 - 30 FPS?
-- Startup screen
 - Bad ending
 
 
@@ -25,3 +24,4 @@
 - Sound effects
 - Rise and fall in space mode
 - Stuff swooshing past to indicate motion
+- Startup screen
