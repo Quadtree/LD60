@@ -22,16 +22,18 @@ public partial class PirateFighter : AnimatableBody3D
 
             GD.Print($"rotation={rotation} {rotation / Mathf.Abs(rotation)}");
 
-            float rotRate = 1 * (float)delta;
+            float rotRate = 4 * (float)delta;
 
-            if (Mathf.Abs(rotation) < rotRate)
-            {
-                LookAt(pc.GlobalPosition);
-            }
-            else
-            {
-                RotateY(rotation / Mathf.Abs(rotation) * rotRate);
-            }
+            // if (Mathf.Abs(rotation) < rotRate)
+            // {
+            //     LookAt(pc.GlobalPosition);
+            // }
+            // else
+            // {
+
+            // }
+
+            RotateY(rotation / Mathf.Abs(rotation) * rotRate);
 
 
             // var distToTargetVector = targetVector.DistanceTo(currentVector);
@@ -46,12 +48,12 @@ public partial class PirateFighter : AnimatableBody3D
 
             // GlobalTransform = GlobalTransform.LookingAt(GlobalPosition + nv);
 
-            // if (distToTargetVector < 0.5f)
-            // {
-            //     GlobalPosition += -GlobalTransform.Basis.Column2 * (float)delta * 4;
-            // }
+            if (Mathf.Abs(rotation) < 0.5f)
+            {
+                GlobalPosition += -GlobalTransform.Basis.Column2 * (float)delta * 4;
+            }
 
-            if (FireCharge >= 0.35f && rotation < 0.2f)
+            if (FireCharge >= 0.35f && Mathf.Abs(rotation) < 0.2f)
             {
                 foreach (var sp in new float[] { 0 })
                 {
