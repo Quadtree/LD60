@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cmtpsxxifciwk"]
+[gd_scene load_steps=51 format=3 uid="uid://cmtpsxxifciwk"]
 
 [ext_resource type="Script" uid="uid://7vqnjeq4m2v7" path="res://maps/Default.cs" id="1_adt7c"]
 [ext_resource type="Script" uid="uid://c5bu6aftmyob7" path="res://maps/PixelatedScreenSubViewportContainer.cs" id="1_q1grt"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://b8j2ujvu3bvaw" path="res://maps/ShipLocationLabel.cs" id="17_lmt8x"]
 [ext_resource type="Script" uid="uid://do0yul0s4egy3" path="res://ui/RobotFightUi.cs" id="19_t4pk5"]
 [ext_resource type="Texture2D" uid="uid://y7o3m7v2psh2" path="res://textures/solid.png" id="21_7t7x6"]
+[ext_resource type="LabelSettings" uid="uid://cenxdfg4t4axi" path="res://ui/DefaultLabelSettingsDark.tres" id="21_tvsj1"]
 [ext_resource type="Script" uid="uid://bef0tkgpmnuky" path="res://ui/ShipHealthBar.cs" id="22_bu02h"]
 [ext_resource type="Script" uid="uid://c4lcggyi14ol0" path="res://ui/MetaManual.cs" id="24_j08x7"]
 
@@ -379,7 +380,7 @@ offset_right = 151.883
 offset_bottom = 153.622
 text = "Keys
 U-1 F-2 J-3 L-4"
-label_settings = ExtResource("10_0tign")
+label_settings = ExtResource("21_tvsj1")
 horizontal_alignment = 1
 
 [node name="OutcomeLabel" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/RobotFightUI"]
@@ -391,7 +392,7 @@ offset_right = 153.573
 offset_bottom = 99.6667
 text = "Uppercut vs Jab
 Uppercut wins!"
-label_settings = ExtResource("10_0tign")
+label_settings = ExtResource("21_tvsj1")
 horizontal_alignment = 1
 
 [node name="HealthLabel" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport/RobotFightUI"]
@@ -402,7 +403,7 @@ offset_top = 17.1556
 offset_right = 152.149
 offset_bottom = 54.1556
 text = "You=10 Robot=20"
-label_settings = ExtResource("10_0tign")
+label_settings = ExtResource("21_tvsj1")
 horizontal_alignment = 1
 
 [node name="EncryptedCoordinates" type="Label" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
@@ -415,7 +416,7 @@ offset_bottom = 117.067
 text = "You get encrypted
 coordinates!
 "
-label_settings = ExtResource("10_0tign")
+label_settings = ExtResource("21_tvsj1")
 
 [node name="ShipHealthBar" type="TextureRect" parent="AspectRatioContainer/PixelatedScreenSubViewportContainer/InGameViewport"]
 modulate = Color(1, 0, 0, 1)

@@ -1,0 +1,14 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://cenxdfg4t4axi"]
+
+[ext_resource type="FontFile" uid="uid://cbaugvydytq6k" path="res://fonts/RobotoMono-VariableFont_wght.ttf" id="1_gfwhp"]
+
+[sub_resource type="FontVariation" id="FontVariation_lmt8x"]
+base_font = ExtResource("1_gfwhp")
+variation_opentype = {
+2003265652: 300
+}
+
+[resource]
+font = SubResource("FontVariation_lmt8x")
+font_size = 12
+font_color = Color(0.701961, 0.231373, 0.164706, 1)

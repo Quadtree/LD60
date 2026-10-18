@@ -119,6 +119,18 @@ public partial class RobotFightUi : Control
             Util.SpawnOneShotSound("res://sounds/fight_hit.wav", this);
         }
 
+        if (RobotHealth <= 0)
+        {
+            PlayerWinsFight();
+        }
+
+        if (YourHealth <= 0)
+        {
+            var tree = GetTree();
+
+            CrawlScreen.PutUpCrawlScreen(this, "KO! Better luck\nnext time!", () => tree.ChangeSceneToFile("res://maps/Default.tscn"));
+        }
+
         UpdateBoxes();
     }
 

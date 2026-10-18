@@ -18,7 +18,7 @@ public partial class Default : Control
         {
             if (body is InStationPC pc)
             {
-                ShipMode();
+                if (!ShipMode()) return;
 
                 var shp = this.FindChildByType<ShipPC>();
                 shp.GlobalPosition = this.FindChildByName<Node3D>("Station2").FindChildByName<Node3D>("ExitPoint").GlobalPosition;
@@ -29,7 +29,7 @@ public partial class Default : Control
         {
             if (body is InStationPC pc)
             {
-                ShipMode();
+                if (!ShipMode()) return;
 
                 var shp = this.FindChildByType<ShipPC>();
                 shp.GlobalPosition = this.FindChildByName<Node3D>("Station").FindChildByName<Node3D>("ExitPoint").GlobalPosition;
@@ -83,31 +83,43 @@ public partial class Default : Control
         }
     }
 
-    public void ShipMode()
+    public bool ShipMode()
     {
+        if ((Time.GetTicksMsec() - LastShipMode) < 500)
+        {
+            GD.Print("Too soon!");
+            return false;
+        }
+
         GD.Print("Ship mode!");
         this.FindChildByName<Node3D>("InStationPC").FindChildByType<Camera3D>().Current = false;
         this.FindChildByName<Node3D>("ShipPC").FindChildByType<Camera3D>().Current = true;
 
         LastShipMode = Time.GetTicksMsec();
+
+        return true;
     }
 
-    public void StationMode()
+    public bool StationMode()
     {
         if ((Time.GetTicksMsec() - LastShipMode) < 500)
         {
             GD.Print("Too soon!");
-            return;
+            return false;
         }
+
+        LastShipMode = Time.GetTicksMsec();
 
         GD.Print("Station mode!");
         this.FindChildByName<Node3D>("InStationPC").FindChildByType<Camera3D>().Current = true;
         this.FindChildByName<Node3D>("ShipPC").FindChildByType<Camera3D>().Current = false;
+
+        return true;
     }
 
     public void Station1Mode()
     {
-        StationMode();
+        if (!StationMode()) return;
 
         var pc = this.FindChildByType<InStationPC>();
 
@@ -118,7 +130,7 @@ public partial class Default : Control
 
     public void Station2Mode()
     {
-        StationMode();
+        if (!StationMode()) return;
 
         var pc = this.FindChildByType<InStationPC>();
 
@@ -129,7 +141,7 @@ public partial class Default : Control
 
     public void Station2CheatMode()
     {
-        StationMode();
+        if (!StationMode()) return;
 
         var pc = this.FindChildByType<InStationPC>();
 
@@ -140,7 +152,7 @@ public partial class Default : Control
 
     public void CheatToPirateStation()
     {
-        ShipMode();
+        if (!ShipMode()) return;
 
         var pc = this.FindChildByType<ShipPC>();
 
